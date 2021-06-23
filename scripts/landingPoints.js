@@ -8,7 +8,7 @@
     var radiusInMeter1 = 100; // 100м
     var radiusInMeter2 = 200; // 200м
     var radiusInMeter3 = 300; // 300м
-    var radiusInMeter4 = 800; // 800м
+    var radiusInMeter4 = 650; // 650м
 
     var map = L.map('map').setView(pntLanding, 14);
     ACCESS_TOKEN = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
