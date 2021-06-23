@@ -116,7 +116,7 @@
         var north = L.control({ position: "bottomright" });
         north.onAdd = function (map) {
             var div = L.DomUtil.create("div", "info legend");
-            div.innerHTML = '<img src="scripts/images/549441-202.png">';
+            div.innerHTML = '<img src="scripts/images/549441-204.png">';
             return div;
         }
         north.addTo(map);
