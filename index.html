@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="styles/Skeleton/base.css" rel="stylesheet" type="text/css">
+    <link href="styles/Skeleton/skeleton.css" rel="stylesheet" type="text/css">
+    <link href="styles/Skeleton/layout.css" rel="stylesheet" type="text/css">
+    <link href="styles/slider.css" rel="stylesheet" />
+    <link href="Scripts/leaflet.css" rel="stylesheet" />
+    <style>
+        #map {
+            height: 450px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="row">
+           <h2>Вычислить контрольные точки </h2>
+        </div>
+
+        <div class="row">
+            <div class="four columns">
+                Направление ветра:
+            </div>
+
+            <div class="slidecontainer three columns">
+                <input type="range" min="0" max="360" value="180" class="slider" id="teAngleValue">
+            </div>
+
+            <div class="three columns">
+                <div id="demo"></div>
+            </div>
+
+            <div class="three columns">
+                <button type="button" id="b1">Получить</button>
+            </div>
+        </div>
+
+        <div class="row">           
+            <div >
+                <div id="map"></div>
+            </div>           
+        </div>
+    </div>
+    <script src="scripts/leaflet-src.js"></script>
+    <script src="scripts/leaflet.geometryutil.js"></script>
+    <script src="scripts/Marker.Rotate.js"></script>
+    <script src="scripts/landingPoints.js?p=11111"></script>
+
+</body>
+</html>
