@@ -8,7 +8,7 @@
     var radiusInMeter1 = 100; // 100м
     var radiusInMeter2 = 200; // 200м
     var radiusInMeter3 = 300; // 300м
-    var radiusInMeter4 = 600; // 600м
+    var radiusInMeter4 = 800; // 800м
 
     var map = L.map('map').setView(pntLanding, 14);
     ACCESS_TOKEN = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
@@ -24,39 +24,45 @@
     var calcPointsDests = function () {
 
         var angle = window.document.getElementById('teAngleValue').value;
-
         if (!angle) angle = angleInWind;
 
         ////////////////////////////////////////////////////////////////////
         ///// 0 - северный, 90 - восточный, 180 - южный, 270 - западный ////
         ////////////////////////////////////////////////////////////////////
         // точка 1: 100 метров против ветра до цели
-        var angleInDegrees1 = angle - 180;
-        var angleInDegrees2 = angle - 90; // справа от цели
-        var angleInDegrees3 = angle - 0; // спереди от цели
+        var angleInDegrees1 = parseInt(angle) - 180;
+        var angleInDegrees2_1 = parseInt(angle) - 90; // справа от цели
+        var angleInDegrees2_2 = parseInt(angle) + 90; // слева от цели
+        //console.log( "angleInDegrees2_2");
+        //console.log(  angleInDegrees2_2);
+        //console.log(  angleInDegrees1);
 
-        var markerA = L.marker(pntLanding);//.addTo(map);
+        var angleInDegrees3 = parseInt(angle) - 0; // спереди от цели
 
-        var markerB = L.GeometryUtil.destination(markerA.getLatLng(), angleInDegrees1, radiusInMeter1);
-        //L.marker(markerB).addTo(map);
+        var markerA = L.marker(pntLanding); //.addTo(map);
 
-        var markerC = L.GeometryUtil.destination(markerA.getLatLng(), angleInDegrees2, radiusInMeter2);
-        //L.marker(markerC).addTo(map);
+        var ll1 = markerA.getLatLng();
 
-        var markerD = L.GeometryUtil.destination(markerA.getLatLng(), angleInDegrees3, radiusInMeter3);
-        //L.marker(markerD).addTo(map);
+        var markerB = L.GeometryUtil.destination(ll1, angleInDegrees1, radiusInMeter1);
 
-        var markerE = L.GeometryUtil.destination(markerA.getLatLng(), angleInDegrees3, radiusInMeter4);
+        var markerC_1 = L.GeometryUtil.destination(ll1, angleInDegrees2_1, radiusInMeter2);
+        var markerC_2 = L.GeometryUtil.destination(ll1, angleInDegrees2_2, radiusInMeter2);
+
+        var markerD = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter3);
+        var markerE = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4);
 
         // стрелка с ветром
-        var windMarker = L.marker(pntArrow, { iconAngle: angle });//.addTo(map);
+        var windMarker = L.marker(pntArrow, {
+            iconAngle: angle
+        }); //.addTo(map);
 
         layerGroup1.clearLayers();
 
         // create markers
         markerA.addTo(layerGroup1);
         L.marker(markerB).addTo(layerGroup1);
-        L.marker(markerC).addTo(layerGroup1);
+        L.marker(markerC_1).addTo(layerGroup1);
+        L.marker(markerC_2).addTo(layerGroup1);
         L.marker(markerD).addTo(layerGroup1);
         L.marker(markerE).addTo(layerGroup1);
 
@@ -78,7 +84,12 @@
         }
 
         /* красный круг для точки приземления*/
-        L.circle(pntLanding, { color: 'red', fillColor: '#f03', fillOpacity: 0.5, radius: 5 }).addTo(map);
+        L.circle(pntLanding, {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 5
+        }).addTo(map);
 
         // добавить слой в котором отображать точки 
         layerGroup1 = L.layerGroup().addTo(map);
@@ -113,7 +124,9 @@
         //////////////////////////////////
         /****  Направление на север  ****/
         //////////////////////////////////
-        var north = L.control({ position: "bottomright" });
+        var north = L.control({
+            position: "bottomright"
+        });
         north.onAdd = function (map) {
             var div = L.DomUtil.create("div", "info legend");
             div.innerHTML = '<img src="scripts/images/549441-204.png">';
