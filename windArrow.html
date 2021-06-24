@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="styles/skeleton/base.css" rel="stylesheet" type="text/css">
+    <link href="styles/skeleton/skeleton.css" rel="stylesheet" type="text/css">
+    <link href="styles/skeleton/layout.css" rel="stylesheet" type="text/css">
+    <link href="styles/slider.css" rel="stylesheet" />
+    <link href="scripts/leaflet.css" rel="stylesheet" />
+
+
+    <title>Перемещение стрелки на карте</title>
+
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        
+           <h4>Перемещение стрелки на карте </h4>
+        
+
+        <div class="row">
+            <div class="five columns">
+                Направление ветра: <span id="demo"></span>
+            </div>
+
+            <div class="slidecontainer three columns">
+                <input type="range" min="0" max="360" value="180" class="slider" id="teAngleValue">
+            </div>
+
+           
+
+            <div class="two columns">
+                <button type="button" id="b1">Задать</button>
+            </div>
+        </div>
+
+        <div class="row">           
+            <div >
+                <div id="map"></div>
+            </div>           
+        </div>
+    </div>
+
+     <script src="scripts/leaflet-1.js"></script>
+      <script src="scripts/windArrow.js?p=123"></script>
+</body>
+</html>
