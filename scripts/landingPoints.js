@@ -8,7 +8,10 @@
     var radiusInMeter1 = 100; // 100м
     var radiusInMeter2 = 200; // 200м
     var radiusInMeter3 = 300; // 300м
-    var radiusInMeter4 = 650; // 650м
+    var radiusInMeter4_1 = 500; // 500м
+    var radiusInMeter4_2 = 700; // 650м
+    var radiusInMeter4_3 = 900; // 500м
+    var radiusInMeter4_4 = 1100; // 650м
 
     var map = L.map('map').setView(pntLanding, 14);
     ACCESS_TOKEN = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
@@ -49,7 +52,9 @@
         var markerC_2 = L.GeometryUtil.destination(ll1, angleInDegrees2_2, radiusInMeter2);
 
         var markerD = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter3);
-        var markerE = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4);
+        var markerE = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_1);
+        var markerF = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_2);
+        var markerG = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_3);
 
         // стрелка с ветром
         var windMarker = L.marker(pntArrow, {
@@ -59,12 +64,14 @@
         layerGroup1.clearLayers();
 
         // create markers
-        markerA.addTo(layerGroup1);
-        L.marker(markerB).addTo(layerGroup1);
-        L.marker(markerC_1).addTo(layerGroup1);
-        L.marker(markerC_2).addTo(layerGroup1);
-        L.marker(markerD).addTo(layerGroup1);
-        L.marker(markerE).addTo(layerGroup1);
+        //markerA.addTo(layerGroup1);
+        L.circle(markerB).addTo(layerGroup1);
+        L.circle(markerC_1).addTo(layerGroup1);
+        L.circle(markerC_2).addTo(layerGroup1);
+        L.circle(markerD).addTo(layerGroup1);
+        L.circle(markerE).addTo(layerGroup1);
+        L.circle(markerF).addTo(layerGroup1);
+        L.circle(markerG).addTo(layerGroup1);
 
         windMarker.addTo(layerGroup1);
 
@@ -88,7 +95,7 @@
             color: 'red',
             fillColor: '#f03',
             fillOpacity: 0.5,
-            radius: 5
+            radius: 10
         }).addTo(map);
 
         // добавить слой в котором отображать точки 
