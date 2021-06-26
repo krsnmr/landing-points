@@ -205,7 +205,7 @@
     else if (val >= 135 && val < 225) txt = " - Южный";
     else if (val >= 225 && val < 315) txt = " - Западный";
     return angle + '&#176;' + txt;
-  }
+  };
 
   var addLandingArea = function () {
     var latlngs = [
@@ -237,7 +237,7 @@
     L.polygon(latlngs2, {
       color: '#fc0'
     }).addTo(map);
-  }
+  };
 
   var addBuildings = function () {
 
@@ -276,5 +276,6 @@
     L.polygon(latlngs3, {
       color: '#777'
     }).addTo(map);
-  }
+  };
+
 })();
