@@ -204,7 +204,7 @@
     else if (val >= 45 && val < 135) txt = " - Восточный";
     else if (val >= 135 && val < 225) txt = " - Южный";
     else if (val >= 225 && val < 315) txt = " - Западный";
-    return angle + txt;
+    return angle + '&#176;' + txt;
   }
 
   var addLandingArea = function () {
