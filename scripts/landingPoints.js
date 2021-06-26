@@ -58,7 +58,7 @@
 
   var calcPointsDests = function () {
     var angle = window.document.getElementById("teAngleValue").value;
-   
+
     if (!angle) {
       angle = angleInWind;
     }
@@ -154,6 +154,10 @@
 
     drawNorthArrow();
 
+    addLandingArea();
+
+    addBuildings();
+
     var btn1 = window.document.getElementById("b1");
     btn1.onclick = function () {
       calcPointsDests();
@@ -173,20 +177,100 @@
     calcPointsDests();
   };
 
+  //
   var initSlider = function () {
     var slider = document.getElementById("teAngleValue");
     var output = document.getElementById("demo");
-    output.innerHTML = slider.value; // Display the default slider value
+    output.innerHTML = setWindTxt(slider.value); // Display the default slider value
 
     // Update the current slider value (each time you drag the slider handle)
     slider.oninput = function () {
       output.innerHTML = this.value;
       var val = parseInt(this.value);
-      if ((val >= 0 && val < 45) || (val >= 315 && val <= 360))
-        output.innerHTML += " - Северный";
-      else if (val >= 45 && val < 135) output.innerHTML += " - Восточный";
-      else if (val >= 135 && val < 225) output.innerHTML += " - Южный";
-      else if (val >= 225 && val < 315) output.innerHTML += " - Западный";
+      var valTxt = setWindTxt(val);
+      output.innerHTML = valTxt;
     };
   };
+
+  var setWindTxt = function (angle) {
+    var val = parseInt(angle);
+    var txt;
+    if ((val >= 0 && val < 45) || (val >= 315 && val <= 360))
+      txt = " - Северный";
+    else if (val >= 45 && val < 135) txt = " - Восточный";
+    else if (val >= 135 && val < 225) txt = " - Южный";
+    else if (val >= 225 && val < 315) txt = " - Западный";
+    return angle + txt;
+  }
+
+  var addLandingArea = function () {
+    var latlngs = [
+      [59.834859, 31.479439],
+      [59.834594, 31.477459],
+      [59.834373, 31.477159],
+      [59.833828, 31.477309],
+      [59.832911, 31.476504],
+      [59.830118, 31.479766],
+      [59.829897, 31.481053],
+      [59.829908, 31.481954],
+      [59.830830, 31.481503],
+      [59.832841, 31.480527],
+      [59.834859, 31.479439]
+    ];
+    var polygon = L.polygon(latlngs, {
+      color: 'yellow'
+    }).addTo(map);
+
+    var latlngs2 = [
+      [59.834875, 31.479470],
+      [59.835473, 31.479210],
+      [59.835274, 31.477847],
+      [59.834791, 31.477262],
+      [59.834594, 31.477273],
+      [59.834872, 31.479472],
+      [59.834875, 31.479470]
+    ];
+    L.polygon(latlngs2, {
+      color: '#fc0'
+    }).addTo(map);
+  }
+
+  var addBuildings = function () {
+
+    var latlngs1 = [
+      [59.835809, 31.478027],
+      [59.835851, 31.478394],
+      [59.835946, 31.478334],
+      [59.835902, 31.477975],
+      [59.835809, 31.478027]
+    ];
+
+    var latlngs2 = [
+      [59.836067, 31.478489],
+      [59.836174, 31.478417],
+      [59.836219, 31.478757],
+      [59.836112, 31.478819],
+      [59.836067, 31.478489]
+    ];
+
+    var latlngs3 = [
+      [59.836061, 31.478474],
+      [59.836020, 31.478160],
+      [59.836084, 31.478131],
+      [59.836121, 31.478438],
+      [59.836061, 31.478474]
+    ];
+
+    L.polygon(latlngs1, {
+      color: '#777'
+    }).addTo(map);
+
+    L.polygon(latlngs2, {
+      color: '#777'
+    }).addTo(map);
+
+    L.polygon(latlngs3, {
+      color: '#777'
+    }).addTo(map);
+  }
 })();
