@@ -9,9 +9,9 @@
   var radiusInMeter2 = 200; // 200м
   var radiusInMeter3 = 300; // 300м
   var radiusInMeter4_1 = 500; // 500м
-  var radiusInMeter4_2 = 700; // 650м
-  var radiusInMeter4_3 = 900; // 500м
-  var radiusInMeter4_4 = 1100; // 650м
+  var radiusInMeter4_2 = 700; // 700м
+  var radiusInMeter4_3 = 900; // 900м
+  var radiusInMeter4_4 = 1100; // 1100м
 
   var iconRedArrow = L.icon({
     iconUrl: "scripts/images/red-arrow-111.png",
@@ -139,8 +139,12 @@
     L.circle(markerC_2).addTo(layerGroup1);
     L.circle(markerD).addTo(layerGroup1);
     L.circle(markerE).addTo(layerGroup1);
-    L.circle(markerF).addTo(layerGroup1);
-    L.circle(markerG).addTo(layerGroup1);
+    L.circle(markerF, {
+      color: "#f0f"
+    }).addTo(layerGroup1);
+    L.circle(markerG, {
+      color: "#f0f"
+    }).addTo(layerGroup1);
 
     windMarker.addTo(layerGroup1);
     windConeMarker.addTo(layerGroup1);
