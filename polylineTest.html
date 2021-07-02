@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="styles/skeleton/base.css" rel="stylesheet" type="text/css">
+    <link href="styles/skeleton/skeleton.css" rel="stylesheet" type="text/css">
+    <link href="styles/skeleton/layout.css" rel="stylesheet" type="text/css">
+    <link href="styles/slider.css" rel="stylesheet" />
+    <link href="scripts/leaflet.css" rel="stylesheet" />
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h4>Сглаженная ломаная кривая </h4>
+        <div class="row">
+            <div>
+                <div id="map"></div>
+            </div>
+        </div>
+        <div class='row'>
+            <a href="https://github.com/elfalem/Leaflet.curve">Leaflet.curve</a>
+        </div>
+    </div>
+
+    <script src="scripts/leaflet-1.js"></script>
+    <script src="scripts/leaflet.curve.js"></script>
+
+    <script>
+        var pntLanding = [59.832743, 31.479341];
+
+        var ar = [
+            [59.834191, 31.479691],
+            [
+                59.833312, 31.477152
+            ],
+            [
+                59.832870, 31.480424
+            ],
+            [
+                59.831533, 31.478461
+            ],
+            [
+                59.830843, 31.481293
+            ]
+        ];
+        var map = L.map("map").setView(pntLanding, 14);
+
+
+        var OSM_URL = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+        L
+            .tileLayer(OSM_URL, {
+                maxZoom: 18
+            })
+            .addTo(map);
+
+
+
+        var polyline = L
+            .polyline(ar, {
+                color: 'red'
+            })
+            .addTo(map);
+
+        L
+            .curve([
+                'M',
+                [59.834191, 31.479691],
+                'T', [
+                    59.833312, 31.477152
+                ],
+                [
+                    59.832870, 31.480424
+                ],
+                [
+                    59.831533, 31.478461
+                ],
+                [
+                    59.830843, 31.481293
+                ]
+            ], {
+                color: 'blue',
+                fill: true
+            })
+            .addTo(map);
+    </script>
+
+</body>
+
+</html>
