@@ -8,7 +8,7 @@
       map.removeLayer(current_accuracy);
     }
 
-    var radius = e.accuracy / 2;
+    var radius = Math.round(e.accuracy / 2);
 
     current_position = L.marker(e.latlng)
       .addTo(map)
@@ -18,16 +18,15 @@
     current_accuracy = L.circle(e.latlng, radius).addTo(map);
   }
 
-    function onLocationError(e) {
-      alert(e.message);
-    }
-
+  function onLocationError(e) {
+    alert(e.message);
+  }
 
   var pos = [59.851606, 30.196719];
   var map = L.map("map").setView(pos, 14); //
-   map.on("locationfound", onLocationFound);
-   map.on("locationerror", onLocationError);
-    map.locate({ setView: true, maxZoom: 16 });
+  map.on("locationfound", onLocationFound);
+  map.on("locationerror", onLocationError);
+  map.locate({ setView: true, maxZoom: 16 });
 
   window.onload = function () {
     initMap();
