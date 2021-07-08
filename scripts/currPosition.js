@@ -3,7 +3,7 @@
   var current_accuracy; // область с точностью с которой определена координата
 
   function onLocationFound(e) {
-    // if position defined, then remove the existing position marker and accuracy circle from the map
+    // удалить старые объекты... if position defined, then remove the existing position marker and accuracy circle from the map
     if (current_position) {
       map.removeLayer(current_position);
       map.removeLayer(current_accuracy);
@@ -17,7 +17,7 @@
       function () {
         document.getElementById('s1').style.color = 'white';
       },
-      1000);
+      500);
 
     current_position = L.marker(e.latlng)
       .addTo(map)
