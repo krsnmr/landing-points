@@ -37,7 +37,7 @@
 
   // !!!!!! запустить переодическое определение координаты !!!!
   map.locate({
-    setView: true,
+    setView: false,
     maxZoom: 16,
     watch: true,
     timeout: 10000, // 10сек в случае ошибки
