@@ -12,7 +12,7 @@
 
     current_position = L.marker(e.latlng)
       .addTo(map)
-      .bindPopup("Вы находитесь внутри " + radius + " метров от этой точки")
+      .bindPopup("Устройство определило что вы находитесь внутри окружности на карте радиусом " + radius + " метров от этой точки")
       .openPopup();
 
     current_accuracy = L.circle(e.latlng, radius).addTo(map);
@@ -26,18 +26,39 @@
   var map = L.map("map").setView(pos, 14); //
   map.on("locationfound", onLocationFound);
   map.on("locationerror", onLocationError);
-  map.locate({ setView: true, maxZoom: 16 });
+  map.locate({
+    setView: true,
+    maxZoom: 16
+  });
 
+  // после загрузки инициировать карту
   window.onload = function () {
-    initMap();
+    initGetPosPeriod();
   };
 
   var initMap = function () {
     OSM_URL = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
     L.tileLayer(OSM_URL, {
       maxZoom: 18,
-      attribution: "",
+      attribution: "Положение на карте",
       id: "mapbox.streets",
     }).addTo(map);
   };
+
+  var currentState = 0;
+  var initGetPosPeriod = function () {
+
+    window.setInterval(function () {
+      currentState++;
+      if (currentState % 5 === 0) {
+        document.getElementById('s1').style.color = 'red';
+      } else {
+        document.getElementById('s1').style.color = 'white';
+      }
+    }, 500);
+
+  }
+
+  initMap();
+  initGetPosPeriod();
 })();
