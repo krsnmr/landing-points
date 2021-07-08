@@ -46,7 +46,7 @@
 
   // после загрузки инициировать карту
   window.onload = function () {
-    initGetPosPeriod();
+   
   };
 
   var initMap = function () {
@@ -61,5 +61,5 @@
 
 
   initMap();
-  //initGetPosPeriod();
+  
 })();
