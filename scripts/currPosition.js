@@ -10,6 +10,14 @@
 
     var radius = Math.round(e.accuracy / 2);
 
+    document.getElementById('s1').style.color = 'red';
+    // сделать через 1 белым
+    window.setTimeout(
+      function () {
+        document.getElementById('s1').style.color = 'white';
+      },
+      1000);
+
     current_position = L.marker(e.latlng)
       .addTo(map)
       .bindPopup("Устройство определило что вы находитесь внутри окружности на карте радиусом " + radius + " метров от этой точки")
@@ -26,9 +34,13 @@
   var map = L.map("map").setView(pos, 14); //
   map.on("locationfound", onLocationFound);
   map.on("locationerror", onLocationError);
+
+  // !!!!!! запустить переодическое определение координаты !!!!
   map.locate({
     setView: true,
-    maxZoom: 16
+    maxZoom: 16,
+    watch: true,
+    timeout: 10000, // 10сек в случае ошибки
   });
 
   // после загрузки инициировать карту
@@ -45,20 +57,8 @@
     }).addTo(map);
   };
 
-  var currentState = 0;
-  var initGetPosPeriod = function () {
 
-    window.setInterval(function () {
-      currentState++;
-      if (currentState % 5 === 0) {
-        document.getElementById('s1').style.color = 'red';
-      } else {
-        document.getElementById('s1').style.color = 'white';
-      }
-    }, 500);
-
-  }
 
   initMap();
-  initGetPosPeriod();
+  //initGetPosPeriod();
 })();

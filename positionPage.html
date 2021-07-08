@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-     <link href="styles/skeleton/base.css" rel="stylesheet" type="text/css">
-    <link href="styles/skeleton/skeleton.css" rel="stylesheet" type="text/css">
-    <link href="styles/skeleton/layout.css" rel="stylesheet" type="text/css">
+    <link href="styles/skeleton/base.css" rel="stylesheet" type="text/css" />
+    <link
+      href="styles/skeleton/skeleton.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="styles/skeleton/layout.css" rel="stylesheet" type="text/css" />
     <link href="styles/slider.css" rel="stylesheet" />
     <link href="scripts/leaflet.css" rel="stylesheet" />
 
     <title>Текущее положение</title>
-        <style>
-        #map {
-            height: 400px;
-            width: 100%;
-        }
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
     </style>
-</head>
-<body>
-     <div class="container">
+  </head>
+  <body>
+    <div class="container">
+      <h4>Текущее положение на местности</h4>
 
-        
-           <h4>Текущее положение на местности </h4>
-        
-
-      
-
-        <div class="row">           
-            <div >
-                <div id="map"></div>
-            </div>           
+      <div class="row">
+        <div>
+          <div id="map"></div>
         </div>
+      </div>
 
-        <div class="row">           
-            <div >
-               <span id='s1'>qqqq</span>
-            </div>           
+      <div class="row">
+        <div>
+          <span id="s1" style="color: white"
+            >Получение координаты устройства...</span
+          >
         </div>
+      </div>
     </div>
-    
 
-     <script src="scripts/leaflet-1.js"></script>
-      <script src="scripts/currPosition.js?p=1"></script>
-</body>
+    <script src="scripts/leaflet-1.js"></script>
+    <script src="scripts/currPosition.js?p=1"></script>
+  </body>
 </html>
