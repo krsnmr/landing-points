@@ -1,5 +1,6 @@
 (function () {
-  var current_position, current_accuracy;
+  var current_position; // маркер с определенной координатой
+  var current_accuracy; // область с точностью с которой определена координата
 
   function onLocationFound(e) {
     // if position defined, then remove the existing position marker and accuracy circle from the map
@@ -20,8 +21,8 @@
 
     current_position = L.marker(e.latlng)
       .addTo(map)
-      .bindPopup("Устройство определило что вы находитесь внутри окружности на карте радиусом " + radius + " метров от этой точки")
-      .openPopup();
+    //.bindPopup("Устройство определило что вы находитесь внутри окружности на карте радиусом " + radius + " метров от этой точки")
+    //.openPopup();
 
     current_accuracy = L.circle(e.latlng, radius).addTo(map);
   }
