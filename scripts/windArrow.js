@@ -1,6 +1,8 @@
 (function () {
   var pntLanding = [59.832743, 31.479341];
   var map = L.map("map").setView(pntLanding, 14);
+  var angle = 180;
+  
   window.onload = function () {
     console.log("wind arrow");
     initSlider();
@@ -17,16 +19,19 @@
     }).addTo(map);
 
     var myIcon = L.icon({
-      iconUrl: "marker-icon.png",
+      iconUrl: "red-arrow.png",
       iconSize: [25, 41],// размер
-      iconAnchor: [12, 41], // положение точки: вверх и полразмера влево
-      //popupAnchor: [-3, -76],
-      //shadowUrl: "my-icon-shadow.png",
-      //shadowSize: [68, 95],
-      //shadowAnchor: [22, 94],
+      iconAnchor: [12, 20], // положение точки: вверх и полразмера влево
+
     });
 
-    L.marker(pntLanding, { icon: myIcon }).addTo(map);
+    var windMarker = L.marker(pntLanding, { icon: myIcon, iconAngle: angle }).addTo(map);
+
+    var b1 = document.getElementById('b1');
+    b1.onclick = function(){
+      //console.log(123);
+      windMarker.setIconAngle(angle);
+    }
   };
 
   var initSlider = function () {
@@ -38,6 +43,7 @@
     slider.oninput = function () {
       output.innerHTML = this.value;
       var val = parseInt(this.value);
+      angle = val;
       if ((val >= 0 && val < 45) || (val >= 315 && val <= 360))
         output.innerHTML += "&deg; - Северный";
       else if (val >= 45 && val < 135) output.innerHTML += "&deg; - Восточный";
