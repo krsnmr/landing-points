@@ -18,11 +18,11 @@
 
         document.getElementById('s1').style.color = 'red';
         document.getElementById('s2').innerHTML =
-            "высота:" + e.altitude +
+            "высота:" + ((e.altitude) ? e.altitude : '-') +
             //"; скорость:" + e.speed +
-            "; направление: " + e.heading +
-            "; точность:" + e.accuracy + "м."
-        "; штамп:" + e.timestamp;
+            "; направление: " + ((e.heading) ? e.heading : '-') +
+            "; точность:" + e.accuracy + "м." +
+            "; штамп:" + e.timestamp;
         // сделать через 1 белым
         window.setTimeout(function() {
             document.getElementById('s1').style.color = 'white';
@@ -72,8 +72,10 @@
         });
     }
 
+    var checkbox = document.getElementById('isUp');
+
     function initCheckCurView() {
-        var checkbox = document.getElementById('isUp');
+
         checkbox.addEventListener('change', (event) => {
             if (event.currentTarget.checked) {
                 //alert('checked');

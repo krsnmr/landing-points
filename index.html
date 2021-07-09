@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
@@ -15,48 +16,48 @@
             height: 400px;
             width: 100%;
         }
-
-        .north{
+        
+        .north {
             height: 50px;
             width: 50px;
-             
         }
     </style>
 </head>
+
 <body>
     <div class="container">
 
-        
-           <h4>Контрольные точки </h4>
-        
+
+        <h4>Контрольные точки </h4>
+
 
         <div class="row">
             <div class="five columns">
-                Направление ветра: <span id="demo"></span>
+                <strong> Направление ветра: </strong><span id="demo"></span>
             </div>
 
             <div class="slidecontainer three columns">
                 <input type="range" min="0" max="360" value="180" class="slider" id="teAngleValue">
             </div>
 
-           
+
 
             <div class="two columns">
                 <button type="button" id="b1">Получить</button>
             </div>
         </div>
 
-        <div class="row">           
-            <div >
+        <div class="row">
+            <div>
                 <div id="map"></div>
-            </div>           
+            </div>
         </div>
 
         <div class='row'>
             <ul>
-                <li>I точка: в створе ветра, лицом к цели (по ветру), высота 300м, удаление 300м </li>
-                <li>II точка: на траверзе цели (боком к цели, по ветру), высота 200м, удаление 200м </li>
-                <li>III точка: в створе ветра, лицом к цели (<strong>против ветра</strong>), высота 100м, удаление 100м </li>
+                <li><strong>I точка</strong>: в створе ветра, лицом к цели (по ветру), высота 300м, удаление 300м </li>
+                <li><strong>II точка</strong>: на траверзе цели (боком к цели, по ветру), высота 200м, удаление 200м </li>
+                <li><strong>III точка</strong>: в створе ветра, лицом к цели (<strong>против ветра</strong>), высота 100м, удаление 100м </li>
             </ul>
         </div>
         <div class="row">
@@ -72,4 +73,5 @@
     <script src="scripts/landingPoints.js?p=11223344"></script>
 
 </body>
+
 </html>
