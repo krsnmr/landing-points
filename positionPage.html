@@ -1,54 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link href="styles/skeleton/base.css" rel="stylesheet" type="text/css" />
-    <link
-      href="styles/skeleton/skeleton.css"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <link href="styles/skeleton/skeleton.css" rel="stylesheet" type="text/css" />
     <link href="styles/skeleton/layout.css" rel="stylesheet" type="text/css" />
     <link href="styles/check-btn.css" rel="stylesheet" type="text/css" />
-    <link href="scripts/leaflet.css" rel="stylesheet"  type="text/css"/>
+    <link href="scripts/leaflet.css" rel="stylesheet" type="text/css" />
 
     <title>Текущее положение</title>
     <style>
-      #map {
-        height: 400px;
-        width: 100%;
-      }
+        #map {
+            height: 400px;
+            width: 100%;
+        }
     </style>
-  </head>
-  <body>
-    <div class="container">
-      <h4>Текущее положение на местности 1111</h4>
+</head>
 
-<div class="row">
-        <div>
-          <!-- Rounded switch -->
-              <label class="switch">
+<body>
+    <div class="container">
+        <h4>Текущее положение на местности 1111</h4>
+
+        <div class="row">
+            <div>
+                <!-- Rounded switch -->
+                <label class="switch">
                 <input type="checkbox">
                 <span class="slider round"></span>
               </label>
+            </div>
         </div>
-      </div>
 
-      
-      <div class="row">
-        <div>
-          <div id="map"></div>
+
+        <div class="row">
+            <div>
+                <div id="map"></div>
+            </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div>
-          <span id="s1" style="color: white"
-            >Получение координаты устройства...</span
-          >
+        <div class="row">
+            <div>
+                <span id="s1" style="color: white">Новые координаты...</span>
+                <span id="s2"></span >
         </div>
       </div>
     </div>
