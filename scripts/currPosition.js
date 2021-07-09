@@ -15,17 +15,18 @@
         //console.log('скорость', e.speed);
         //console.log('timestamp', e.timestamp);
 
+
         document.getElementById('s1').style.color = 'red';
         document.getElementById('s2').innerHTML =
             "высота:" + e.altitude +
-            "; скорость:" + e.speed +
-            "; штамп:" + e.timestamp;
+            //"; скорость:" + e.speed +
+            "; направление: " + e.heading +
+            "; точность:" + e.accuracy + "м."
+        "; штамп:" + e.timestamp;
         // сделать через 1 белым
-        window.setTimeout(
-            function() {
-                document.getElementById('s1').style.color = 'white';
-            },
-            500);
+        window.setTimeout(function() {
+            document.getElementById('s1').style.color = 'white';
+        }, 500);
 
         current_position = L.marker(e.latlng)
             .addTo(map)
@@ -34,6 +35,7 @@
 
         current_accuracy = L.circle(e.latlng, radius).addTo(map);
     }
+
 
     function onLocationError(e) {
         alert(e.message);
@@ -44,13 +46,6 @@
     map.on("locationfound", onLocationFound);
     map.on("locationerror", onLocationError);
 
-    // !!!!!! запустить переодическое определение координаты !!!!
-    map.locate({
-        setView: false,
-        maxZoom: 16,
-        watch: true,
-        timeout: 10000, // 10сек в случае ошибки
-    });
 
     // после загрузки инициировать карту
     window.onload = function() {
@@ -66,8 +61,33 @@
         }).addTo(map);
     };
 
+    // !!!!!! запустить переодическое определение координаты !!!!
+    function initLocate(isSetView) {
 
+        map.locate({
+            setView: isSetView,
+            maxZoom: 16,
+            watch: true,
+            timeout: 10000, // 10сек в случае ошибки
+        });
+    }
 
+    function initCheckCurView() {
+        var checkbox = document.getElementById('isUp');
+        checkbox.addEventListener('change', (event) => {
+            if (event.currentTarget.checked) {
+                //alert('checked');
+                //console.log('initCheckCurView 1');
+                initLocate(true);
+            } else {
+                //alert('not checked');
+                //console.log('initCheckCurView 0');
+                initLocate(false);
+            }
+        })
+    }
+
+    initLocate(false);
     initMap();
-
+    initCheckCurView();
 })();
