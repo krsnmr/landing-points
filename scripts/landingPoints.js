@@ -1,4 +1,5 @@
 ﻿(function() {
+
     var pntLanding = [59.832743, 31.479341];
     var pntArrow = [59.834362, 31.479521];
     var pntCone = [59.835057, 31.479017];
@@ -56,6 +57,8 @@
         id: "mapbox.streets",
     }).addTo(map);
 
+
+
     var calcPointsDests = function() {
         var angle = window.document.getElementById("teAngleValue").value;
 
@@ -69,72 +72,33 @@
         var angleInDegrees1 = parseInt(angle) - 180;
         var angleInDegrees2_1 = parseInt(angle) - 90; // справа от цели
         var angleInDegrees2_2 = parseInt(angle) + 90; // слева от цели
-        //console.log( "angleInDegrees2_2");
-        //console.log(  angleInDegrees2_2);
-        //console.log(  angleInDegrees1);
+
 
         var angleInDegrees3 = parseInt(angle) - 0; // спереди от цели
 
-        var markerA = L.marker(pntLanding); //.addTo(map);
+        var markerA = L.marker(pntLanding);
 
         var ll1 = markerA.getLatLng();
         // точка 1 (100)
-        var markerB = L.GeometryUtil.destination(
-            ll1,
-            angleInDegrees1,
-            radiusInMeter1
-        );
+        var markerB = L.GeometryUtil.destination(ll1, angleInDegrees1, radiusInMeter1);
 
         // точка 2 слева от цели (200)
-        var markerC_1 = L.GeometryUtil.destination(
-            ll1,
-            angleInDegrees2_1,
-            radiusInMeter2
-        );
+        var markerC_1 = L.GeometryUtil.destination(ll1, angleInDegrees2_1, radiusInMeter2);
 
         // точка 2 слева от цели (200)
-        var markerC_2 = L.GeometryUtil.destination(
-            ll1,
-            angleInDegrees2_2,
-            radiusInMeter2
-        );
+        var markerC_2 = L.GeometryUtil.destination(ll1, angleInDegrees2_2, radiusInMeter2);
 
         // точка 3 (300)
-        var markerD = L.GeometryUtil.destination(
-            ll1,
-            angleInDegrees3,
-            radiusInMeter3
-        );
+        var markerD = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter3);
 
-
-        var markerE = L.GeometryUtil.destination(
-            ll1,
-            angleInDegrees3,
-            radiusInMeter4_1
-        );
-        var markerF = L.GeometryUtil.destination(
-            ll1,
-            angleInDegrees3,
-            radiusInMeter4_2
-        );
-        var markerG = L.GeometryUtil.destination(
-            ll1,
-            angleInDegrees3,
-            radiusInMeter4_3
-        );
+        var markerE = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_1);
+        var markerF = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_2);
+        var markerG = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_3);
 
         // стрелка с ветром
-        var windMarker = L.marker(pntArrow, {
-            iconAngle: angle,
-            icon: iconRedArrow,
-        }); //.addTo(map);
+        var windMarker = L.marker(pntArrow, { iconAngle: angle, icon: iconRedArrow, });
 
-        var windConeMarker = L.marker(pntCone, {
-            iconAngle: angleInDegrees1,
-            icon: iconWindCone,
-        });
-
-        //var northImage = L.
+        var windConeMarker = L.marker(pntCone, { iconAngle: angleInDegrees1, icon: iconWindCone, });
 
         layerGroup1.clearLayers();
 
@@ -142,31 +106,33 @@
         L.polyline([markerB, markerG], { color: '#ccc', weight: 1 }).addTo(layerGroup1);
         L.polyline([markerC_1, markerC_2], { color: '#ccc', weight: 1 }).addTo(layerGroup1);
         // create markers
-        L.circle(ll1, {
-            color: "#f00"
-        }).addTo(layerGroup1);
+        L.circle(ll1, { color: "#f00" }).addTo(layerGroup1);
         L.circle(markerB).addTo(layerGroup1);
         L.circle(markerC_1).addTo(layerGroup1);
         L.circle(markerC_2).addTo(layerGroup1);
         L.circle(markerD).addTo(layerGroup1);
         L.circle(markerE).addTo(layerGroup1);
-        L.circle(markerF, {
-            color: "#f0f"
-        }).addTo(layerGroup1);
-        L.circle(markerG, {
-            color: "#f0f"
-        }).addTo(layerGroup1);
-
-
-
-        //L.circle(markerB).addTo(layerGroup1);
-
+        L.circle(markerF, { color: "#f0f" }).addTo(layerGroup1);
+        L.circle(markerG, { color: "#f0f" }).addTo(layerGroup1);
 
         windMarker.addTo(layerGroup1);
         windConeMarker.addTo(layerGroup1);
 
-        // remove all the markers in one go
     };
+
+    // !!!!!! запустить переодическое определение координаты !!!!
+    var initLocate = function(isSetView) {
+
+        map.locate({
+            setView: isSetView,
+            maxZoom: 16,
+            watch: true,
+            timeout: 10000, // 10сек в случае ошибки
+        });
+    }
+
+    map.on("locationfound", onLocationFound);
+    map.on("locationerror", onLocationError);
 
     var layerGroup1 = null;
     window.onload = function() {
@@ -179,25 +145,34 @@
         addBuildings();
 
         var btn1 = window.document.getElementById("b1");
-        btn1.onclick = function() {
-            calcPointsDests();
-        };
-
-        /* красный круг для точки приземления
-        L.circle(pntLanding, {
-            color: "red",
-            fillColor: "#f03",
-            fillOpacity: 0.5,
-            radius: 10,
-        }).addTo(map);*/
+        btn1.onclick = function() { calcPointsDests(); };
 
         // добавить слой в котором отображать точки
         layerGroup1 = L.layerGroup().addTo(map);
 
         calcPointsDests();
+
+        initLocate(false);
     };
 
-    //
+    var current_position; // маркер с определенной координатой
+    var current_accuracy; // область с точностью с которой определена координата
+    function onLocationFound(e) {
+        // удалить старые объекты... if position defined, then remove the existing position marker and accuracy circle from the map
+        if (current_position) {
+            map.removeLayer(current_position);
+            map.removeLayer(current_accuracy);
+        }
+        current_position = L.marker(e.latlng).addTo(map)
+        var radius = Math.round(e.accuracy / 2);
+        current_accuracy = L.circle(e.latlng, radius).addTo(map);
+    }
+
+    function onLocationError(e) {
+        alert(e.message);
+    }
+
+    // 
     var initSlider = function() {
         var slider = document.getElementById("teAngleValue");
         var output = document.getElementById("demo");
@@ -212,6 +187,7 @@
         };
     };
 
+    // отобразить текстовое описание ветра
     var setWindTxt = function(angle) {
         var val = parseInt(angle);
         var txt;
@@ -222,6 +198,7 @@
         else if (val >= 225 && val < 315) txt = " - Западный";
         return angle + '&#176;' + txt;
     };
+
 
     var addLandingArea = function() {
         var latlngs = [

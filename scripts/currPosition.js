@@ -72,10 +72,8 @@
         });
     }
 
-    var checkbox = document.getElementById('isUp');
-
     function initCheckCurView() {
-
+        var checkbox = document.getElementById('isUp');
         checkbox.addEventListener('change', (event) => {
             if (event.currentTarget.checked) {
                 //alert('checked');
