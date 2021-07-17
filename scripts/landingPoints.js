@@ -6,6 +6,8 @@
 
     var angleInWind = 180; // южный
 
+    var radiusInMeter1_3 = 10; // 5м
+    var radiusInMeter1_2 = 50; // 50м
     var radiusInMeter1 = 100; // 100м
     var radiusInMeter2 = 200; // 200м
     var radiusInMeter3 = 300; // 300м
@@ -57,7 +59,15 @@
         id: "mapbox.streets",
     }).addTo(map);
 
-
+    var getLastPointValue = function() {
+        var windSpeed = window.document.getElementById("ddlWindSpeed").value;
+        if (windSpeed == 1)
+            return radiusInMeter1;
+        if (windSpeed == 2)
+            return radiusInMeter1_2;
+        if (windSpeed == 3)
+            return radiusInMeter1_3;
+    }
 
     var calcPointsDests = function() {
         var angle = window.document.getElementById("teAngleValue").value;
@@ -80,7 +90,8 @@
 
         var ll1 = markerA.getLatLng();
         // точка 1 (100)
-        var markerB = L.GeometryUtil.destination(ll1, angleInDegrees1, radiusInMeter1);
+        var dest1 = getLastPointValue();
+        var markerB = L.GeometryUtil.destination(ll1, angleInDegrees1, dest1);
 
         // точка 2 слева от цели (200)
         var markerC_1 = L.GeometryUtil.destination(ll1, angleInDegrees2_1, radiusInMeter2);
@@ -144,8 +155,11 @@
 
         addBuildings();
 
-        var btn1 = window.document.getElementById("b1");
-        btn1.onclick = function() { calcPointsDests(); };
+        //var btn1 = window.document.getElementById("b1");
+        //btn1.onclick = function() { calcPointsDests(); };
+
+        var ddl = window.document.getElementById("ddlWindSpeed");
+        ddl.onchange = function() { calcPointsDests() }
 
         // добавить слой в котором отображать точки
         layerGroup1 = L.layerGroup().addTo(map);
@@ -184,6 +198,8 @@
             var val = parseInt(this.value);
             var valTxt = setWindTxt(val);
             output.innerHTML = valTxt;
+
+            calcPointsDests();
         };
     };
 
