@@ -122,7 +122,7 @@
         L.circle(markerC_1).addTo(layerGroup1);
         L.circle(markerC_2).addTo(layerGroup1);
         L.circle(markerD).addTo(layerGroup1);
-        L.circle(markerE).addTo(layerGroup1);
+        L.circle(markerE, { color: "#f0f" }).addTo(layerGroup1);
         L.circle(markerF, { color: "#f0f" }).addTo(layerGroup1);
         L.circle(markerG, { color: "#f0f" }).addTo(layerGroup1);
 
