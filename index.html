@@ -3,14 +3,22 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>Контрольные точки</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="icon" type="image/png" href="img/pin-33.png" />
+    <link rel="shortcut icon" type="image/png" href="img/pin-33.png" />
+
     <link href="styles/skeleton/base.css" rel="stylesheet" type="text/css">
     <link href="styles/skeleton/skeleton.css" rel="stylesheet" type="text/css">
     <link href="styles/skeleton/layout.css" rel="stylesheet" type="text/css">
-    <link href="styles/slider.css" rel="stylesheet"  type="text/css" />
-    <link href="scripts/leaflet.css" rel="stylesheet"  type="text/css" />
+    <link href="styles/slider.css" rel="stylesheet" />
+    <link href="scripts/leaflet.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+
     <style>
         #map {
             height: 400px;
@@ -26,13 +34,14 @@
 
 <body>
     <div class="container">
+        <header class="row">
 
+            <h5><i class="fa fa-plane"></i> Контрольные точки <i class="fa fa-plane"></i></h5>
 
-        <h4>Контрольные точки </h4>
-
+        </header>
 
         <div class="row">
-            <div class="five columns">
+            <div class="three columns">
                 <strong> Направление ветра: </strong><span id="demo"></span>
             </div>
 
@@ -42,8 +51,15 @@
 
 
 
-            <div class="two columns">
-                <button type="button" id="b1">Получить</button>
+            <div class="three columns">
+                <!-- <button type="button" id="b1">Получить</button>-->
+                <label for="ddlWindSpeed">Ветер у земли:</label>
+                <select id='ddlWindSpeed'>
+                            <option value="1">1-3м/с</option>
+                            <option value="2">4–6 м/с</option>
+                            <option value="3">7–8 м/с</option>
+                    </select>
+
             </div>
         </div>
 
@@ -60,17 +76,33 @@
                 <li><strong>III точка</strong>: в створе ветра, лицом к цели (<strong>против ветра</strong>), высота 100м, удаление 100м </li>
             </ul>
         </div>
+
+        <div>
+            <strong>На высоте 100 м. на III-ей контрольной точке</strong>
+            <ul>
+                <li>Удаление точки от цели <strong>100 м.</strong> для ветра у земли 1-3 м/сек. </li>
+                <li>Удаление точки от цели <strong>50 м.</strong> для ветра у земли 4–6 м/сек. </li>
+                <li>Удаление точки от цели <strong>0 м.</strong> для ветра у земли 7–8 м/сек. </li>
+            </ul>
+
+        </div>
+
+
         <div class="row">
             <div>
                 <a href="positionPage.html">Текущее положение</a>
             </div>
         </div>
+
+        <footer class="row">
+            <span>Контрольные точки</span> <i class="fa fa-plane"></i> 2021
+        </footer>
     </div>
 
     <script src="scripts/leaflet-1.js"></script>
     <script src="scripts/leaflet.geometryutil.js"></script>
     <script src="scripts/Marker.Rotate.js"></script>
-    <script src="scripts/landingPoints.js?p=11223344"></script>
+    <script src="scripts/landingPoints.js?p=123"></script>
 
 </body>
 
