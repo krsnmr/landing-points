@@ -1,4 +1,4 @@
-﻿(function() {
+﻿(function () {
 
     var pntLanding = [59.832743, 31.479341];
     var pntArrow = [59.834362, 31.479521];
@@ -30,14 +30,14 @@
         popupAnchor: [-3, -76],
     });
 
-    var drawNorthArrow = function() {
+    var drawNorthArrow = function () {
         //////////////////////////////////
         /****  Направление на север  ****/
         //////////////////////////////////
         var north = L.control({
             position: "bottomright",
         });
-        north.onAdd = function(map) {
+        north.onAdd = function (map) {
             var div = L.DomUtil.create("div", "info");
             div.innerHTML =
                 '<img class="north" src="scripts/images/north-arrow-111.png">';
@@ -59,7 +59,7 @@
         id: "mapbox.streets",
     }).addTo(map);
 
-    var getLastPointValue = function() {
+    var getLastPointValue = function () {
         var windSpeed = window.document.getElementById("ddlWindSpeed").value;
         if (windSpeed == 1)
             return radiusInMeter1;
@@ -69,7 +69,7 @@
             return radiusInMeter1_3;
     }
 
-    var calcPointsDests = function() {
+    var calcPointsDests = function () {
         var angle = window.document.getElementById("teAngleValue").value;
 
         if (!angle) {
@@ -85,6 +85,12 @@
 
 
         var angleInDegrees3 = parseInt(angle) - 0; // спереди от цели
+
+        // стрелка с ветром
+        var windMarker = L.marker(pntArrow, { iconAngle: angle, icon: iconRedArrow, });
+
+        // конус
+        var windConeMarker = L.marker(pntCone, { iconAngle: angleInDegrees1, icon: iconWindCone, });
 
         var markerA = L.marker(pntLanding);
 
@@ -106,12 +112,12 @@
         var markerF = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_2);
         var markerG = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_3);
 
-        // стрелка с ветром
-        var windMarker = L.marker(pntArrow, { iconAngle: angle, icon: iconRedArrow, });
 
-        var windConeMarker = L.marker(pntCone, { iconAngle: angleInDegrees1, icon: iconWindCone, });
 
         layerGroup1.clearLayers();
+
+        
+        
 
 
         L.polyline([markerB, markerG], { color: '#ccc', weight: 1 }).addTo(layerGroup1);
@@ -126,13 +132,12 @@
         L.circle(markerF, { color: "#f0f" }).addTo(layerGroup1);
         L.circle(markerG, { color: "#f0f" }).addTo(layerGroup1);
 
-        windMarker.addTo(layerGroup1);
         windConeMarker.addTo(layerGroup1);
-
+        windMarker.addTo(layerGroup1);
     };
 
     // !!!!!! запустить переодическое определение координаты !!!!
-    var initLocate = function(isSetView) {
+    var initLocate = function (isSetView) {
 
         map.locate({
             setView: isSetView,
@@ -146,7 +151,7 @@
     map.on("locationerror", onLocationError);
 
     var layerGroup1 = null;
-    window.onload = function() {
+    window.onload = function () {
         initSlider();
 
         drawNorthArrow();
@@ -159,7 +164,7 @@
         //btn1.onclick = function() { calcPointsDests(); };
 
         var ddl = window.document.getElementById("ddlWindSpeed");
-        ddl.onchange = function() { calcPointsDests() }
+        ddl.onchange = function () { calcPointsDests() }
 
         // добавить слой в котором отображать точки
         layerGroup1 = L.layerGroup().addTo(map);
@@ -187,13 +192,13 @@
     }
 
     // 
-    var initSlider = function() {
+    var initSlider = function () {
         var slider = document.getElementById("teAngleValue");
         var output = document.getElementById("demo");
         output.innerHTML = setWindTxt(slider.value); // Display the default slider value
 
         // Update the current slider value (each time you drag the slider handle)
-        slider.oninput = function() {
+        slider.oninput = function () {
             output.innerHTML = this.value;
             var val = parseInt(this.value);
             var valTxt = setWindTxt(val);
@@ -204,19 +209,30 @@
     };
 
     // отобразить текстовое описание ветра
-    var setWindTxt = function(angle) {
+    var setWindTxt = function (angle) {
         var val = parseInt(angle);
         var txt;
-        if ((val >= 0 && val < 45) || (val >= 315 && val <= 360))
-            txt = " - Северный";
-        else if (val >= 45 && val < 135) txt = " - Восточный";
-        else if (val >= 135 && val < 225) txt = " - Южный";
-        else if (val >= 225 && val < 315) txt = " - Западный";
+        if ((val >= 0 && val < 22.5) || (val >= 337.5 && val <= 360))
+        txt = " Северный";
+    else if (val >= 22.5 && val < 67.5) 
+        txt = " Северо-Восточный";
+    else if (val >= 67.5 && val < 112.5) 
+        txt = " Восточный";
+    else if (val >= 112.5 && val < 157.5) 
+        txt = " Юго-Восточный";
+    else if (val >= 157.5 && val < 202.5) 
+        txt = " Южный";
+    else if (val >= 202.5 && val < 247.5) 
+        txt = " Юго-Западный";
+    else if (val >= 247.5 && val < 292.5) 
+        txt = " Западный";
+    else if (val >= 292.5 && val < 337.5) 
+        txt = " Северо-Западный";
         return angle + '&#176;' + txt;
     };
 
 
-    var addLandingArea = function() {
+    var addLandingArea = function () {
         var latlngs = [
             [59.834859, 31.479439],
             [59.834594, 31.477459],
@@ -248,7 +264,7 @@
         }).addTo(map);
     };
 
-    var addBuildings = function() {
+    var addBuildings = function () {
 
         var latlngs1 = [
             [59.835809, 31.478027],

@@ -10,25 +10,45 @@
     <link rel="icon" type="image/png" href="img/pin-33.png" />
     <link rel="shortcut icon" type="image/png" href="img/pin-33.png" />
 
-    <link href="styles/skeleton/base.css" rel="stylesheet" type="text/css">
+    <!--<link href="styles/skeleton/base.css" rel="stylesheet" type="text/css">
     <link href="styles/skeleton/skeleton.css" rel="stylesheet" type="text/css">
-    <link href="styles/skeleton/layout.css" rel="stylesheet" type="text/css">
+    <link href="styles/skeleton/layout.css" rel="stylesheet" type="text/css">-->
     <link href="styles/slider.css" rel="stylesheet" />
     <link href="scripts/leaflet.css" rel="stylesheet" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
 
     <style>
         #map {
             height: 400px;
             width: 100%;
         }
-        
+
         .north {
             height: 50px;
             width: 50px;
         }
+
+        .text-block {
+            background-color: ghostwhite;
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        h5,
+        footer {
+            color: #ddd;
+            background-color: #333;
+            text-align: center;
+        }
+
+        ul.no-bullets {
+            list-style-type: none; /* Remove bullets */
+            padding: 0; /* Remove padding */
+            margin: 0; /* Remove margins */
+            }
     </style>
 </head>
 
@@ -40,9 +60,9 @@
 
         </header>
 
-        <div class="row">
+        <div class="row text-block">
             <div class="three columns">
-                <strong> Направление ветра: </strong><span id="demo"></span>
+                <strong> Направление ветра: </strong>
             </div>
 
             <div class="slidecontainer three columns">
@@ -54,32 +74,39 @@
             <div class="three columns">
                 <!-- <button type="button" id="b1">Получить</button>-->
                 <label for="ddlWindSpeed">Ветер у земли:</label>
+            </div>
+                <div class="three columns">
+
                 <select id='ddlWindSpeed'>
-                            <option value="1">1-3м/с</option>
-                            <option value="2">4–6 м/с</option>
-                            <option value="3">7–8 м/с</option>
-                    </select>
+                    <option value="1">1-3м/с</option>
+                    <option value="2">4–6 м/с</option>
+                    <option value="3">7–8 м/с</option>
+                </select>
 
             </div>
-        </div>
 
+            <span id="demo"></span>
+        </div>
+        
         <div class="row">
             <div>
                 <div id="map"></div>
             </div>
         </div>
 
-        <div class='row'>
-            <ul>
+        <div class='row text-block'>
+            <ul class="no-bullets">
                 <li><strong>I точка</strong>: в створе ветра, лицом к цели (по ветру), высота 300м, удаление 300м </li>
-                <li><strong>II точка</strong>: на траверзе цели (боком к цели, по ветру), высота 200м, удаление 200м </li>
-                <li><strong>III точка</strong>: в створе ветра, лицом к цели (<strong>против ветра</strong>), высота 100м, удаление 100м </li>
+                <li><strong>II точка</strong>: на траверзе цели (боком к цели, по ветру), высота 200м, удаление 200м
+                </li>
+                <li><strong>III точка</strong>: в створе ветра, лицом к цели (<strong>против ветра</strong>), высота
+                    100м, удаление 100м </li>
             </ul>
         </div>
 
-        <div>
+        <div class='row text-block'>
             <strong>На высоте 100 м. на III-ей контрольной точке</strong>
-            <ul>
+            <ul class="no-bullets">
                 <li>Удаление точки от цели <strong>100 м.</strong> для ветра у земли 1-3 м/сек. </li>
                 <li>Удаление точки от цели <strong>50 м.</strong> для ветра у земли 4–6 м/сек. </li>
                 <li>Удаление точки от цели <strong>0 м.</strong> для ветра у земли 7–8 м/сек. </li>
