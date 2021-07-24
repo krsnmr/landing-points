@@ -86,6 +86,12 @@
 
         var angleInDegrees3 = parseInt(angle) - 0; // спереди от цели
 
+        // стрелка с ветром
+        var windMarker = L.marker(pntArrow, { iconAngle: angle, icon: iconRedArrow, });
+
+        // конус
+        var windConeMarker = L.marker(pntCone, { iconAngle: angleInDegrees1, icon: iconWindCone, });
+
         var markerA = L.marker(pntLanding);
 
         var ll1 = markerA.getLatLng();
@@ -106,12 +112,12 @@
         var markerF = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_2);
         var markerG = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_3);
 
-        // стрелка с ветром
-        var windMarker = L.marker(pntArrow, { iconAngle: angle, icon: iconRedArrow, });
 
-        var windConeMarker = L.marker(pntCone, { iconAngle: angleInDegrees1, icon: iconWindCone, });
 
         layerGroup1.clearLayers();
+
+
+
 
 
         L.polyline([markerB, markerG], { color: '#ccc', weight: 1 }).addTo(layerGroup1);
@@ -126,9 +132,8 @@
         L.circle(markerF, { color: "#f0f" }).addTo(layerGroup1);
         L.circle(markerG, { color: "#f0f" }).addTo(layerGroup1);
 
-        windMarker.addTo(layerGroup1);
         windConeMarker.addTo(layerGroup1);
-
+        windMarker.addTo(layerGroup1);
     };
 
     // !!!!!! запустить переодическое определение координаты !!!!
@@ -165,6 +170,8 @@
         layerGroup1 = L.layerGroup().addTo(map);
 
         calcPointsDests();
+
+        setOpenWeatherData();
 
         initLocate(false);
     };
@@ -203,15 +210,44 @@
         };
     };
 
+
+    // получить текущую погоду из сервиса
+    var owmUrl = "https://api.openweathermap.org/data/2.5/weather?id=866055&lang=ru&units=metric&appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
+    // получить текущую погоду из сервиса
+    var setOpenWeatherData = function() {
+        $.get(owmUrl, function(data) {
+
+            var windDeg = data.wind.deg
+            console.log('напр ветра - ', windDeg);
+
+            $('#teAngleValue').val(windDeg);
+            calcPointsDests();
+
+            $('#demo').html(setWindTxt(windDeg));
+        });
+    }
+
+
     // отобразить текстовое описание ветра
     var setWindTxt = function(angle) {
         var val = parseInt(angle);
         var txt;
-        if ((val >= 0 && val < 45) || (val >= 315 && val <= 360))
-            txt = " - Северный";
-        else if (val >= 45 && val < 135) txt = " - Восточный";
-        else if (val >= 135 && val < 225) txt = " - Южный";
-        else if (val >= 225 && val < 315) txt = " - Западный";
+        if ((val >= 0 && val < 22.5) || (val >= 337.5 && val <= 360))
+            txt = " Северный";
+        else if (val >= 22.5 && val < 67.5)
+            txt = " Северо-Восточный";
+        else if (val >= 67.5 && val < 112.5)
+            txt = " Восточный";
+        else if (val >= 112.5 && val < 157.5)
+            txt = " Юго-Восточный";
+        else if (val >= 157.5 && val < 202.5)
+            txt = " Южный";
+        else if (val >= 202.5 && val < 247.5)
+            txt = " Юго-Западный";
+        else if (val >= 247.5 && val < 292.5)
+            txt = " Западный";
+        else if (val >= 292.5 && val < 337.5)
+            txt = " Северо-Западный";
         return angle + '&#176;' + txt;
     };
 

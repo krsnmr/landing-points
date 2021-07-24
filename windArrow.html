@@ -1,60 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="styles/skeleton/base.css" rel="stylesheet" type="text/css">
-    <link href="styles/skeleton/skeleton.css" rel="stylesheet" type="text/css">
-    <link href="styles/skeleton/layout.css" rel="stylesheet" type="text/css">
-    <link href="styles/slider.css" rel="stylesheet" />
-    <link href="scripts/leaflet.css" rel="stylesheet" />
 
+    <link rel="stylesheet" href="styles/skeleton/skeleton2.min.css">
 
-    <title>Перемещение стрелки на карте</title>
+    <script src="scripts/jquery.min.js"></script>
+    <title>Пример использования OpenWeatherMap</title>
 
     <style>
-        #map {
-            height: 400px;
-            width: 100%;
-        }
+
     </style>
 </head>
+
 <body>
     <div class="container">
 
-        
-           <h4>Перемещение стрелки на карте </h4>
-        
+
+        <h4>Получение данных из сервиса OpenWeatherMap </h4>
+
 
         <div class="row">
             <div class="five columns">
-                Направление ветра: <span id="demo"></span>
+                Направление ветра: <span id="demo1"></span>гр.<br> Скоорость ветра: <span id="demo2"></span>м/с<br> Порывы: <span id="demo3"></span>м/с<br> Состояние: <span id="demo4"></span> <br> Температура: <span id="demo5"></span> <br>
+                <hr>
             </div>
 
-            <div class="slidecontainer three columns">
-                <input type="range" min="0" max="360" value="180" class="slider" id="teAngleValue">
+            <div class="three columns">
+                <img alt="погода" id='wicon'>
             </div>
-
-           
 
             <div class="two columns">
                 <button type="button" id="b1">Задать</button>
             </div>
         </div>
 
-        <div class="row">           
-            <div >
-                <div id="map"></div>
-            </div>           
+        <div class="row">
+            <div>
+                <a class="navbar-link" href="index.html">Главная</a>
+            </div>
         </div>
 
-       
+
     </div>
 
-     <script src="scripts/leaflet-1.js"></script>
-     <script src="scripts/Marker.Rotate.js"></script>
-      <script src="scripts/windArrow.js?p=123"></script>
+    <script src="scripts/openweathermap1.js?p=999"></script>
+
 </body>
+
 </html>
