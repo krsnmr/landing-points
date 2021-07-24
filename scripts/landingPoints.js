@@ -212,7 +212,7 @@
 
 
     // получить текущую погоду из сервиса
-    var owmUrl = "http://api.openweathermap.org/data/2.5/weather?id=866055&lang=ru&units=metric&appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
+    var owmUrl = "https://api.openweathermap.org/data/2.5/weather?id=866055&lang=ru&units=metric&appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
     // получить текущую погоду из сервиса
     var setOpenWeatherData = function() {
         $.get(owmUrl, function(data) {
