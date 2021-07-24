@@ -17,38 +17,50 @@
     <link href="scripts/leaflet.css" rel="stylesheet" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
 
     <style>
         #map {
             height: 400px;
             width: 100%;
         }
-
+        
         .north {
             height: 50px;
             width: 50px;
         }
-
+        
         .text-block {
             background-color: ghostwhite;
             border: 1px solid #ccc;
             padding: 5px;
             margin: 5px 0;
         }
-
+        
         h5,
         footer {
             color: #ddd;
             background-color: #333;
             text-align: center;
         }
-
+        
         ul.no-bullets {
-            list-style-type: none; /* Remove bullets */
-            padding: 0; /* Remove padding */
-            margin: 0; /* Remove margins */
-            }
+            list-style-type: none;
+            /* Remove bullets */
+            padding: 0;
+            /* Remove padding */
+            margin: 0;
+            /* Remove margins */
+        }
+        
+        .slidecontainer input,
+        #ddlWindSpeed {
+            margin-bottom: auto;
+        }
+        
+        .slidecontainer.label-body {
+            margin-left: auto;
+        }
     </style>
 </head>
 
@@ -61,34 +73,34 @@
         </header>
 
         <div class="row text-block">
-            <div class="three columns">
-                <strong> Направление ветра: </strong>
+            <div class="five columns">
+                <label> Направление ветра: 
+            
+
+                    <div class="slidecontainer label-body">
+                        <input type="range" min="0" max="360" value="180" class="slider" id="teAngleValue">
+                    </div>
+                </label>
             </div>
-
-            <div class="slidecontainer three columns">
-                <input type="range" min="0" max="360" value="180" class="slider" id="teAngleValue">
-            </div>
-
-
-
             <div class="three columns">
+                <span id="demo"></span></div>
+
+            <div class="four columns">
                 <!-- <button type="button" id="b1">Получить</button>-->
-                <label for="ddlWindSpeed">Ветер у земли:</label>
-            </div>
-                <div class="three columns">
-
-                <select id='ddlWindSpeed'>
-                    <option value="1">1-3м/с</option>
-                    <option value="2">4–6 м/с</option>
-                    <option value="3">7–8 м/с</option>
-                </select>
-
+                <label for="ddlWindSpeed">Ветер у земли:
+                    <select id='ddlWindSpeed' class="label-body">
+                        <option value="1">1-3м/с</option>
+                        <option value="2">4–6 м/с</option>
+                        <option value="3">7–8 м/с</option>
+                    </select>
+                </label>
             </div>
 
-            <span id="demo"></span>
+
+
         </div>
-        
-        <div class="row">
+
+        <div class="row text-block">
             <div>
                 <div id="map"></div>
             </div>
@@ -99,8 +111,7 @@
                 <li><strong>I точка</strong>: в створе ветра, лицом к цели (по ветру), высота 300м, удаление 300м </li>
                 <li><strong>II точка</strong>: на траверзе цели (боком к цели, по ветру), высота 200м, удаление 200м
                 </li>
-                <li><strong>III точка</strong>: в створе ветра, лицом к цели (<strong>против ветра</strong>), высота
-                    100м, удаление 100м </li>
+                <li><strong>III точка</strong>: в створе ветра, лицом к цели (<strong>против ветра</strong>), высота 100м, удаление 100м </li>
             </ul>
         </div>
 
@@ -129,6 +140,7 @@
     <script src="scripts/leaflet-1.js"></script>
     <script src="scripts/leaflet.geometryutil.js"></script>
     <script src="scripts/Marker.Rotate.js"></script>
+    <script src="scripts/jquery.min.js"></script>
     <script src="scripts/landingPoints.js?p=123"></script>
 
 </body>
