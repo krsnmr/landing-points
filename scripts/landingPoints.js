@@ -101,36 +101,50 @@
 
         // точка 2 слева от цели (200)
         var markerC_1 = L.GeometryUtil.destination(ll1, angleInDegrees2_1, radiusInMeter2);
+         var markerC_1_2 = L.GeometryUtil.destination(ll1, angleInDegrees2_1, 100);
+
 
         // точка 2 слева от цели (200)
         var markerC_2 = L.GeometryUtil.destination(ll1, angleInDegrees2_2, radiusInMeter2);
+        var markerC_2_2 = L.GeometryUtil.destination(ll1, angleInDegrees2_2, 100);
 
-        // точка 3 (300)
+        // точка 3 (300) radiusInMeter3
+        var markerD_1 = L.GeometryUtil.destination(ll1, angleInDegrees3, 100);
+        var markerD_2 = L.GeometryUtil.destination(ll1, angleInDegrees3, 200);
         var markerD = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter3);
 
-        var markerE = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_1);
-        var markerF = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_2);
-        var markerG = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_3);
-
-
+        var markerE_1 = L.GeometryUtil.destination(ll1, angleInDegrees3, 400);
+        var markerE_2 = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_1);
+         var markerF_0 = L.GeometryUtil.destination(ll1, angleInDegrees3, 600);
+        var markerF_1 = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_2);
+         var markerG_0 = L.GeometryUtil.destination(ll1, angleInDegrees3, 800);
+        var markerG_1 = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_3);
+        var markerG_2 = L.GeometryUtil.destination(ll1, angleInDegrees3, 1000);
 
         layerGroup1.clearLayers();
 
 
-
-
-
-        L.polyline([markerB, markerG], { color: '#ccc', weight: 1 }).addTo(layerGroup1);
+        L.polyline([markerB, markerG_2], { color: '#ccc', weight: 1 }).addTo(layerGroup1);
         L.polyline([markerC_1, markerC_2], { color: '#ccc', weight: 1 }).addTo(layerGroup1);
         // create markers
         L.circle(ll1, { color: "#f00" }).addTo(layerGroup1);
         L.circle(markerB).addTo(layerGroup1);
         L.circle(markerC_1).addTo(layerGroup1);
         L.circle(markerC_2).addTo(layerGroup1);
+        L.circle(markerC_1_2, { color: "#ссс" }).addTo(layerGroup1);
+        L.circle(markerC_2_2, { color: "#ссс" }).addTo(layerGroup1);
+
         L.circle(markerD).addTo(layerGroup1);
-        L.circle(markerE, { color: "#f0f" }).addTo(layerGroup1);
-        L.circle(markerF, { color: "#f0f" }).addTo(layerGroup1);
-        L.circle(markerG, { color: "#f0f" }).addTo(layerGroup1);
+        L.circle(markerD_1, { color: "#ссс" }).addTo(layerGroup1);
+        L.circle(markerD_2, { color: "#ссс" }).addTo(layerGroup1);
+
+        L.circle(markerE_1, { color: "#ссс" }).addTo(layerGroup1);
+        L.circle(markerE_2, { color: "#f0f" }).addTo(layerGroup1);
+         L.circle(markerF_0, { color: "#ссс" }).addTo(layerGroup1);
+        L.circle(markerF_1, { color: "#f0f" }).addTo(layerGroup1);
+         L.circle(markerG_0, { color: "#ссс" }).addTo(layerGroup1);
+        L.circle(markerG_1, { color: "#f0f" }).addTo(layerGroup1);
+        L.circle(markerG_2, { color: "#ссс" }).addTo(layerGroup1);
 
         windConeMarker.addTo(layerGroup1);
         windMarker.addTo(layerGroup1);

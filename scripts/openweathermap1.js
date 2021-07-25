@@ -8,14 +8,15 @@ var owm1 = (function($) {
     $(function() {
 
         $.get(href, function(data) {
-            console.log('напр ветра - ', data.wind.deg);
+            //console.log('напр ветра - ', data.wind.deg);
+            console.log("weather - ", data);
             //&units=metric&lang=ru
             $('#demo1').text(data.wind.deg);
             $('#demo2').text(data.wind.speed);
             $('#demo3').text(data.wind.gust);
             $('#demo4').text(data.weather[0].description);
             $('#demo5').text(data.main.temp);
-            var iconurl = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+            var iconurl = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
 
             $('#wicon').attr('src', iconurl);
         });

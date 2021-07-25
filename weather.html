@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="styles/skeleton/skeleton2.min.css" />
+
+    <script src="scripts/jquery.min.js"></script>
+    <title>Погода с OpenWeatherMap</title>
+
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="row">
+        <h5>
+          <i class="fa fa-plane"></i> Контрольные точки
+          <i class="fa fa-plane"></i>
+        </h5>
+      </header>
+
+      <h5>Погода с OpenWeatherMap</h5>
+
+      <div class="row">
+        <div class="five columns">
+          Направление ветра: <span id="demo1"></span>гр.<br />
+          Скоорость ветра: <span id="demo2"></span>м/с<br />
+          Порывы: <span id="demo3"></span>м/с<br />
+          Состояние: <span id="demo4"></span> <br />
+          Температура: <span id="demo5"></span> <br />
+
+          Погода: <img alt="погода" id="wicon" />
+          <hr />
+        </div>
+
+        <div class="three columns"></div>
+
+        <div class="two columns"></div>
+      </div>
+
+      <div class="row">
+        <div>
+          <a class="navbar-link" href="index.html">Главная</a>
+        </div>
+      </div>
+
+      <footer class="row">
+        <span>Контрольные точки</span> <i class="fa fa-plane"></i> 2021
+        <br />
+        <span>Контакт:<i class="fa fa-laptop" aria-hidden="true"></i>
+          knstshk@gmail.com</span>
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+      </footer>
+    </div>
+
+    <script src="scripts/openweathermap1.js?p=966"></script>
+  </body>
+</html>

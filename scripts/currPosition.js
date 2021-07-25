@@ -42,7 +42,8 @@
     }
 
     var pos = [59.851606, 30.196719];
-    var map = L.map("map").setView(pos, 14); //
+    var pntCone = [59.835057, 31.479017];
+    var map = L.map("map").setView(pntCone, 14); //
     map.on("locationfound", onLocationFound);
     map.on("locationerror", onLocationError);
 

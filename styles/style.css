@@ -1,0 +1,41 @@
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+.north {
+  height: 50px;
+  width: 50px;
+}
+
+.text-block {
+  background-color: ghostwhite;
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 5px 0;
+}
+
+header h5,
+footer {
+  color: #ddd;
+  background-color: #333;
+  text-align: center;
+}
+
+ul.no-bullets {
+  list-style-type: none;
+  /* Remove bullets */
+  padding: 0;
+  /* Remove padding */
+  margin: 0;
+  /* Remove margins */
+}
+
+.slidecontainer input,
+#ddlWindSpeed {
+  margin-bottom: auto;
+}
+
+.slidecontainer.label-body {
+  margin-left: auto;
+}
