@@ -231,13 +231,16 @@
     var setOpenWeatherData = function() {
         $.get(owmUrl, function(data) {
 
-            var windDeg = data.wind.deg
-            console.log('напр ветра - ', windDeg);
+            var windDeg = data.wind.deg;
+             var speedDeg = data.wind.speed;
+            //console.log('напр ветра - ', windDeg);
 
             $('#teAngleValue').val(windDeg);
             calcPointsDests();
 
             $('#demo').html(setWindTxt(windDeg));
+
+            $("#spWindSpeed").html(speedDeg + 'м/с');
         });
     }
 

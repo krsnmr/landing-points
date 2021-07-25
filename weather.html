@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="styles/skeleton/skeleton2.min.css" />
+    <link rel="icon" type="image/png" href="img/pin-33.png" />
+    <link rel="shortcut icon" type="image/png" href="img/pin-33.png" />
 
-    <script src="scripts/jquery.min.js"></script>
     <title>Погода с OpenWeatherMap</title>
+    <link href="scripts/leaflet.css" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
   </head>
@@ -24,7 +26,7 @@
 
       <h5>Погода с OpenWeatherMap</h5>
 
-      <div class="row">
+      <div class="row" style="display: none">
         <div class="five columns">
           Направление ветра: <span id="demo1"></span>гр.<br />
           Скоорость ветра: <span id="demo2"></span>м/с<br />
@@ -41,6 +43,45 @@
         <div class="two columns"></div>
       </div>
 
+      <div class="row text-block">
+        <div>
+          <div id="map2"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <table>
+          <thead>
+            <tr>
+              <th>Название</th>
+
+              <th>Напр-ние ветра, гр</th>
+              <th>Ско-рость, м/с</th>
+             
+              <th></th>
+              <th>Облач-ность, %</th>
+               <th>Темп-ра, &#8451;</th>
+            </tr>
+          </thead>
+
+          <tbody data-bind="foreach: locs">
+            <tr>
+              <td><span data-bind="text: name"></span></td>
+
+              <td><span data-bind="text: deg"></span></td>
+              <td><span data-bind="text: speed"></span></td>
+              
+
+              <td>
+                <img data-bind="attr: { src: iconUrl, title: desc }" />
+              </td>
+              <td><span data-bind="text: clouds"></span></td>
+              <td><span data-bind="text: temp"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <div class="row">
         <div>
           <a class="navbar-link" href="index.html">Главная</a>
@@ -50,12 +91,16 @@
       <footer class="row">
         <span>Контрольные точки</span> <i class="fa fa-plane"></i> 2021
         <br />
-        <span>Контакт:<i class="fa fa-laptop" aria-hidden="true"></i>
-          knstshk@gmail.com</span>
+        <span
+          >Контакт:<i class="fa fa-laptop" aria-hidden="true"></i>
+          knstshk@gmail.com</span
+        >
         <i class="fa fa-envelope-o" aria-hidden="true"></i>
       </footer>
     </div>
-
+    <script src="scripts/leaflet-1.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"></script>
     <script src="scripts/openweathermap1.js?p=966"></script>
   </body>
 </html>
