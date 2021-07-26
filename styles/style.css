@@ -1,44 +1,47 @@
 #map {
-  height: 400px;
-  width: 100%;
+    height: 400px;
+    width: 100%;
 }
+
 #map2 {
-  height: 200px;
-  width: 100%;
+    height: 200px;
+    width: 100%;
 }
+
 .north {
-  height: 50px;
-  width: 50px;
+    height: 50px;
+    width: 50px;
 }
 
 .text-block {
-  background-color: ghostwhite;
-  border: 1px solid #ccc;
-  padding: 5px;
-  margin: 5px 0;
+    background-color: ghostwhite;
+    border: 1px solid #bbb;
+    padding: 5px;
+    margin: 5px 0;
+    border-radius: 4px;
 }
 
 header h5,
 footer {
-  color: #ddd;
-  background-color: #333;
-  text-align: center;
+    color: #ddd;
+    background-color: #333;
+    text-align: center;
 }
 
 ul.no-bullets {
-  list-style-type: none;
-  /* Remove bullets */
-  padding: 0;
-  /* Remove padding */
-  margin: 0;
-  /* Remove margins */
+    list-style-type: none;
+    /* Remove bullets */
+    padding: 0;
+    /* Remove padding */
+    margin: 0;
+    /* Remove margins */
 }
 
 .slidecontainer input,
 #ddlWindSpeed {
-  margin-bottom: auto;
+    margin-bottom: auto;
 }
 
 .slidecontainer.label-body {
-  margin-left: auto;
+    margin-left: auto;
 }

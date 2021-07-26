@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Контрольные точки</title>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     <link rel="icon" type="image/png" href="img/pin-33.png" />
     <link rel="shortcut icon" type="image/png" href="img/pin-33.png" />
@@ -17,32 +15,25 @@
     <link href="styles/skeleton/layout.css" rel="stylesheet" type="text/css">-->
     <link href="styles/slider.css" rel="stylesheet" type="text/css" />
     <link href="scripts/leaflet.css" rel="stylesheet" type="text/css" />
-    <link
-      href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet" type="text/css" />
 
-    <link href="styles/style.css" rel="stylesheet" type="text/css" />
-  </head>
+    <link href="styles/style.css?p=111" rel="stylesheet" type="text/css" />
+</head>
 
-  <body>
+<body>
     <div class="container">
-      <header class="row">
-        <h5>
-          <i class="fa fa-plane"></i> Контрольные точки
-          <i class="fa fa-plane"></i>
-        </h5>
-      </header>
+        <header class="row">
+            <h5>
+                <i class="fa fa-plane"></i> Контрольные точки
+                <i class="fa fa-plane"></i>
+            </h5>
+        </header>
 
-      <div class="row text-block">
-        <div class="five columns">
-          <label>
+        <div class="row text-block">
+            <div class="five columns">
+                <label>
             Направление ветра:
 
             <div class="slidecontainer label-body">
@@ -56,15 +47,14 @@
               />
             </div>
           </label>
-        </div>
-        <div class="three columns">
-          <span id="demo"></span>
-        </div>
+            </div>
+            <div class="three columns">
+                <span id="demo"></span>
+            </div>
 
-        <div class="four columns">
-          <!-- <button type="button" id="b1">Получить</button>-->
-          <label for="ddlWindSpeed"
-            >Ветер у земли:
+            <div class="four columns">
+                <!-- <button type="button" id="b1">Получить</button>-->
+                <label for="ddlWindSpeed">Ветер у земли:
             <select id="ddlWindSpeed" class="label-body">
               <option value="1">1-3м/с</option>
               <option value="2">4–6 м/с</option>
@@ -72,29 +62,26 @@
             </select>
             <span id="spWindSpeed"></span>
           </label>
+            </div>
         </div>
-      </div>
 
-      <div class="row text-block">
-        <div>
-          <div id="map"></div>
+        <div class="row text-block">
+            <div>
+                <div id="map"></div>
+            </div>
         </div>
-      </div>
 
-      <div class="row text-block">
-        <strong>Заход на приземление</strong>
-        <ul class="no-bullets">
-          <li>
-            <strong>I точка</strong>: в створе ветра, лицом к цели (по ветру),
-            высота 300м, удаление 300м
-          </li>
-          <li>
-            <strong>II точка</strong>: на траверзе цели (боком к цели, по
-            ветру), высота 200м, удаление 200м
-          </li>
-          <li>
-            <strong>III точка</strong>: в створе ветра, лицом к цели (<strong
-              >против ветра</strong
+        <div class="row text-block">
+            <strong>Заход на приземление</strong>
+            <ul class="no-bullets">
+                <li>
+                    <strong>I точка</strong>: в створе ветра, лицом к цели (по ветру), высота 300м, удаление 300м
+                </li>
+                <li>
+                    <strong>II точка</strong>: на траверзе цели (боком к цели, по ветру), высота 200м, удаление 200м
+                </li>
+                <li>
+                    <strong>III точка</strong>: в створе ветра, лицом к цели (<strong>против ветра</strong
             >), высота 100м, удаление 100м
           </li>
         </ul>
@@ -102,34 +89,30 @@
 
       <div class="row text-block">
         <strong>На высоте 100 м. на III-ей контрольной точке</strong>
-        <ul class="no-bullets">
-          <li>
-            Удаление точки от цели <strong>100 м.</strong> для ветра у земли 1-3
-            м/сек.
-          </li>
-          <li>
-            Удаление точки от цели <strong>50 м.</strong> для ветра у земли 4–6
-            м/сек.
-          </li>
-          <li>
-            Удаление точки от цели <strong>0 м.</strong> для ветра у земли 7–8
-            м/сек.
-          </li>
-        </ul>
-      </div>
-
-      <div class="row">
-        <div>
-          <a class="button" href="weather.html">Погода</a>
-          <a class="button" href="positionPage.html">Местоположение</a>
+                    <ul class="no-bullets">
+                        <li>
+                            Удаление точки от цели <strong>100 м.</strong> для ветра у земли 1-3 м/сек.
+                        </li>
+                        <li>
+                            Удаление точки от цели <strong>50 м.</strong> для ветра у земли 4–6 м/сек.
+                        </li>
+                        <li>
+                            Удаление точки от цели <strong>0 м.</strong> для ветра у земли 7–8 м/сек.
+                        </li>
+                    </ul>
         </div>
-      </div>
 
-      <footer class="row">
-        <span>Контрольные точки</span> <i class="fa fa-plane"></i> 2021
-        <br />
-        <span
-          >Контакт:<i class="fa fa-laptop" aria-hidden="true"></i>
+        <div class="row">
+            <div>
+                <a class="button" href="weather.html">Погода</a>
+                <a class="button" href="positionPage.html">Местоположение</a>
+            </div>
+        </div>
+
+        <footer class="row">
+            <span>Контрольные точки</span> <i class="fa fa-plane"></i> 2021
+            <br />
+            <span>Контакт:<i class="fa fa-laptop" aria-hidden="true"></i>
           knstshk@gmail.com</span
         >
         <i class="fa fa-envelope-o" aria-hidden="true"></i>
