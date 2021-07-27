@@ -11,7 +11,7 @@
     <link rel="shortcut icon" type="image/png" href="img/pin-33.png" />
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <title>Погода с OpenWeatherMap</title>
+    <title>Прогноз погоды с OpenWeatherMap</title>
     <link href="scripts/leaflet.css" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" type="text/css" href="styles/style.css?p=111" />
@@ -26,23 +26,11 @@
             </h5>
         </header>
 
-        <h5>Погода с OpenWeatherMap</h5>
+        <h5>Прогноз погоды (OpenWeatherMap)</h5>
 
-        <div class="row" style="display: none">
-            <div class="five columns">
-                Направление ветра: <span id="demo1"></span>гр.<br /> Скоорость ветра: <span id="demo2"></span>м/с<br /> Порывы: <span id="demo3"></span>м/с<br /> Состояние: <span id="demo4"></span> <br /> Температура: <span id="demo5"></span> <br /> Погода:
-                <img alt="погода" id="wicon" />
-                <hr />
-            </div>
-
-            <div class="three columns"></div>
-
-            <div class="two columns"></div>
-        </div>
-
-        <div class="row text-block">
+        <div class="row text-block" style="display: none;">
             <div>
-                <div id="map2"></div>
+
             </div>
         </div>
 
@@ -50,7 +38,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Название</th>
+                        <th>Дата</th>
 
                         <th>Напр-ние ветра, гр</th>
                         <th>Ско-рость, м/с</th>
@@ -61,12 +49,14 @@
                     </tr>
                 </thead>
 
-                <tbody data-bind="foreach: locs">
+                <tbody data-bind="foreach: items">
                     <tr>
-                        <td><span data-bind="text: name"></span></td>
+                        <td><span data-bind="text: dt_txt"></span></td>
 
                         <td><span data-bind="text: deg"></span></td>
-                        <td><span data-bind="text: speed"></span></td>
+                        <td><span data-bind="text: speed"></span> (
+                            <span data-bind="text: gust"></span>)
+                        </td>
 
 
                         <td>
@@ -82,7 +72,6 @@
         <div class="row">
             <div>
                 <a class="button" href="index.html">Главная</a>
-                <a class="button" href="weatherHrForecast.html">Прогноз</a>
             </div>
         </div>
 
@@ -95,9 +84,9 @@
         <i class="fa fa-envelope-o" aria-hidden="true"></i>
       </footer>
     </div>
-    <script src="scripts/leaflet-1.js"></script>
+   
     <script src="scripts/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"></script>
-    <script src="scripts/openweathermap1.js?p=966"></script>
+    <script src="scripts/openweathermap2.js?p=1111"></script>
   </body>
 </html>
