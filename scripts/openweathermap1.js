@@ -11,6 +11,9 @@ var owm1 = (function ($, ko, L) {
   var href2 =
     "https://api.openweathermap.org/data/2.5/find?lat=59.835057&lon=31.479017&cnt=8&lang=ru&units=metric&APPID=2abe21ecc1e023a3e634fc34f9cc1ff0";
 
+    var href3 = 
+    "https://api.openweathermap.org/data/2.5/forecast?id=866055&lang=ru&units=metric&appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
+
   var pntCone = [59.835057, 31.479017];
 
   function LocationViewModel(name, lat, lon, temp, speed, deg, desc, icon, clouds) {
