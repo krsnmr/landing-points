@@ -20,7 +20,7 @@
     <title>Прогноз погоды на 5 дней (OpenWeatherMap)</title>
     <link href="scripts/leaflet.css" rel="stylesheet" type="text/css" />
 
-    <link rel="stylesheet" type="text/css" href="styles/style.css?p=111" />
+    <link rel="stylesheet" type="text/css" href="styles/style.css?p=1111" />
   </head>
 
   <body>
@@ -32,7 +32,8 @@
         </h5>
       </header>
 
-      <h5>Прогноз погоды на 5 дней (OpenWeatherMap)</h5>
+      <div class="text-title">Прогноз погоды 
+          на 5 дней (OpenWeatherMap) <strong data-bind="text:city" ></strong></div>
 
       <div class="row text-block" style="display: none">
         <div></div>
@@ -42,10 +43,7 @@
         <table>
           <thead>
             <tr>
-              <th>Дата</th>
-
-             
-
+              <th>Дата</th>             
               <th></th>
               <th>Облч-ть, %</th>
                <th>Напр ветр, гр</th>

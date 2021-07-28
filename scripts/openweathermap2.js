@@ -7,7 +7,7 @@
 
     moment.locale('ru');
 
-    
+
     function LocationViewModel(dt_txt, dt, temp, speed, deg, gust, desc, icon, clouds) {
         var self = this;
         self.dt_txt = moment(dt * 1000).format('ddd DD MMM HH').toString() + 'ч';;
@@ -28,7 +28,7 @@
         var self = this;
 
         self.items = ko.observableArray();
-
+        self.city = ko.observable();
         self.addItem = function(item) {
             self.items.push(item);
         };
@@ -38,7 +38,8 @@
         var vm = new ForecastViewModel();
 
         $.get(owmFcst0Url, function(data) {
-            //console.log(data);
+            console.log(data);
+            vm.city(data.city.name)
             for (let i = 0; i < data.list.length; i++) {
                 const el = data.list[i];
                 var item = new LocationViewModel(el.dt_txt, el.dt,

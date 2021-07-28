@@ -28,6 +28,10 @@ footer {
     text-align: center;
 }
 
+.text-title{
+    font-size: 1.8rem;
+}
+
 ul.no-bullets {
     list-style-type: none;
     /* Remove bullets */
