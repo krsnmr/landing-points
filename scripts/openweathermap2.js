@@ -36,25 +36,29 @@
 
     $(function() {
         var vm = new ForecastViewModel();
-
-        $.get(owmFcst0Url, function(data) {
-            console.log(data);
-            vm.city(data.city.name)
-            for (let i = 0; i < data.list.length; i++) {
-                const el = data.list[i];
-                var item = new LocationViewModel(el.dt_txt, el.dt,
-                    el.main.temp,
-                    el.wind.speed,
-                    el.wind.deg,
-                    el.wind.gust,
-                    el.weather[0].description,
-                    el.weather[0].icon,
-                    el.clouds.all
-                );
-                vm.addItem(item);
-            }
-
-        });
+        $("#loadingProc").show();
+        $.get(owmFcst0Url, function (data) {
+          //console.log(data);
+          
+          vm.city(data.city.name);
+          for (let i = 0; i < data.list.length; i++) {
+            const el = data.list[i];
+            var item = new LocationViewModel(
+              el.dt_txt,
+              el.dt,
+              el.main.temp,
+              el.wind.speed,
+              el.wind.deg,
+              el.wind.gust,
+              el.weather[0].description,
+              el.weather[0].icon,
+              el.clouds.all
+            );
+            vm.addItem(item);
+          }
+        }).always(function () {
+          $("#loadingProc").hide();
+        });;
 
         ko.applyBindings(vm);
     })
