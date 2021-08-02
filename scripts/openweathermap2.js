@@ -10,7 +10,7 @@
 
     function LocationViewModel(dt_txt, dt, temp, speed, deg, gust, desc, icon, clouds) {
         var self = this;
-        self.dt_txt = moment(dt * 1000).format('ddd DD MMM HH').toString() + 'ч';;
+        self.dt_txt = moment.unix(dt).format('ddd DD MMM HH').toString() + 'ч';;
         self.dt = dt;
         self.temp = Math.round(temp);
         self.speed = speed;
