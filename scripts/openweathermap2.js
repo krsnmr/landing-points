@@ -1,17 +1,18 @@
 (function($, ko) {
 
-    // получить текущую погоду из сервиса
+    // получить прогноз погоды для города
     var owmUrl = "https://api.openweathermap.org/data/2.5/weather?id=866055&lang=ru&units=metric&appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
     var owmFcst1Url = "https://api.openweathermap.org/data/2.5/forecast/hourly?id=866055&lang=ru&units=metric&appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
     var owmFcst0Url = "https://api.openweathermap.org/data/2.5/forecast?id=866055&lang=ru&units=metric&appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
 
     moment.locale('ru');
-
+    var today = moment(new Date().getTime()).format("DD.MM HH");
 
     function LocationViewModel(dt_txt, dt, temp, speed, deg, gust, desc, icon, clouds) {
         var self = this;
         self.dt_txt = moment(dt * 1000).format('ddd DD MMM HH').toString() + 'ч';;
         self.dt = dt;
+
         self.temp = Math.round(temp);
         self.speed = speed;
         self.deg = deg;
@@ -22,6 +23,8 @@
 
         self.iconUrl =
             "https://openweathermap.org/img/w/" + icon + ".png";
+
+          self.diffDays = moment.duration(today.diff(dt)).asDays();
     }
 
     function ForecastViewModel() {
@@ -34,8 +37,14 @@
         };
     }
 
+    var vm = new ForecastViewModel();
+    
+
+
     $(function() {
-        var vm = new ForecastViewModel();
+
+
+        
         $("#loadingProc").show();
         $.get(owmFcst0Url, function (data) {
           //console.log(data);
@@ -58,7 +67,7 @@
           }
         }).always(function () {
           $("#loadingProc").hide();
-        });;
+        });
 
         ko.applyBindings(vm);
     })
