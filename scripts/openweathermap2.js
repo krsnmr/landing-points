@@ -28,6 +28,7 @@
     function ForecastViewModel() {
         var self = this;
 
+        self.fctDate = moment().format('ddd DD MMM HH:mm').toString(); // ''
         self.items = ko.observableArray();
         self.city = ko.observable();
         self.addItem = function(item) {
