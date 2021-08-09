@@ -21,7 +21,7 @@ var owm1 = (function($, ko, L) {
         self.name = name;
         self.lat = lat;
         self.lon = lon;
-        self.temp = temp;
+        self.temp = Math.round(temp);
         self.speed = speed;
         self.deg = deg;
 

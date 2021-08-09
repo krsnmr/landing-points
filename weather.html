@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link rel="stylesheet" href="styles/reset.min.css">
     <link rel="stylesheet" href="styles/skeleton/skeleton2.min.css" type="text/css" />
     <link rel="icon" type="image/png" href="img/pin-33.png" />
     <link rel="shortcut icon" type="image/png" href="img/pin-33.png" />
@@ -26,7 +27,7 @@
             </h5>
         </header>
 
-        <h5>Погода с OpenWeatherMap</h5>
+        <h5>Погода</h5>
 
         <div class="row" style="display: none">
             <div class="five columns">
@@ -51,28 +52,22 @@
                 <thead>
                     <tr>
                         <th>Название</th>
-
-                        <th>Напр-ние ветра, гр</th>
-                        <th>Ско-рость, м/с</th>
-
                         <th></th>
-                        <th>Облач-ность, %</th>
-                        <th>Темп-ра, &#8451;</th>
+                        <th>Облч %</th>
+                        <th>Напр гр</th>
+                        <th>Скор м/с</th>
+                        <th>Темп &#8451;</th>
                     </tr>
                 </thead>
-
                 <tbody data-bind="foreach: locs">
                     <tr>
                         <td><span data-bind="text: name"></span></td>
-
-                        <td><span data-bind="text: deg"></span></td>
-                        <td><span data-bind="text: speed"></span></td>
-
-
                         <td>
                             <img data-bind="attr: { src: iconUrl, title: desc }" />
                         </td>
                         <td><span data-bind="text: clouds"></span></td>
+                        <td><span data-bind="text: deg"></span></td>
+                        <td><span data-bind="text: speed"></span></td>
                         <td><span data-bind="text: temp"></span></td>
                     </tr>
                 </tbody>

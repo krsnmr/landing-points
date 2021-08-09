@@ -10,7 +10,8 @@
 
     function LocationViewModel(dt_txt, dt, temp, speed, deg, gust, desc, icon, clouds) {
         var self = this;
-        self.dt_txt = moment.unix(dt).format('ddd DD MMM HH').toString() + 'ч';;
+        self.dt_txt = moment.unix(dt).format('HH').toString() + 'ч'; // 'ddd DD MMM HH'
+        self.dt_txt_day = moment.unix(dt).format('ddd').toString();
         self.dt = dt;
         self.temp = Math.round(temp);
         self.speed = speed;
@@ -37,27 +38,27 @@
     $(function() {
         var vm = new ForecastViewModel();
         $("#loadingProc").show();
-        $.get(owmFcst0Url, function (data) {
-          //console.log(data);
-          
-          vm.city(data.city.name);
-          for (let i = 0; i < data.list.length; i++) {
-            const el = data.list[i];
-            var item = new LocationViewModel(
-              el.dt_txt,
-              el.dt,
-              el.main.temp,
-              el.wind.speed,
-              el.wind.deg,
-              el.wind.gust,
-              el.weather[0].description,
-              el.weather[0].icon,
-              el.clouds.all
-            );
-            vm.addItem(item);
-          }
-        }).always(function () {
-          $("#loadingProc").hide();
+        $.get(owmFcst0Url, function(data) {
+            //console.log(data);
+
+            vm.city(data.city.name);
+            for (let i = 0; i < data.list.length; i++) {
+                const el = data.list[i];
+                var item = new LocationViewModel(
+                    el.dt_txt,
+                    el.dt,
+                    el.main.temp,
+                    el.wind.speed,
+                    el.wind.deg,
+                    el.wind.gust,
+                    el.weather[0].description,
+                    el.weather[0].icon,
+                    el.clouds.all
+                );
+                vm.addItem(item);
+            }
+        }).always(function() {
+            $("#loadingProc").hide();
         });;
 
         ko.applyBindings(vm);
