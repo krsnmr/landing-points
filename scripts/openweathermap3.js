@@ -6,7 +6,7 @@
     //var owmFcst0Url = "https://api.openweathermap.org/data/2.5/forecast?id=866055&lang=ru&units=metric&appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
 
     // *****  Minute forecast for 1 hour  *****  Hourly forecast for 48 hours  **** 
-    var owmFcst1Url = "https://api.openweathermap.org/data/2.5/onecall?lat=59.835057&lon=31.479017&exclude=current,minutely,daily,alerts&appid=2abe21ecc1e023a3e634fc34f9cc1ff0&lang=ru";
+    var owmFcst1Url = "https://api.openweathermap.org/data/2.5/onecall?lat=59.835057&lon=31.479017&exclude=current,minutely,daily,alerts&units=metric&appid=2abe21ecc1e023a3e634fc34f9cc1ff0&lang=ru";
 
 
     moment.locale('ru');
