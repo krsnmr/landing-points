@@ -1,84 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link
-      rel="stylesheet"
-      href="styles/skeleton/skeleton2.min.css"
-      type="text/css"
-    />
+    <link rel="stylesheet" href="styles/skeleton/skeleton2.min.css" type="text/css" />
     <link rel="icon" type="image/png" href="img/pin-33.png" />
     <link rel="shortcut icon" type="image/png" href="img/pin-33.png" />
-    <link
-      href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
-    <title>Прогноз погоды на 5 дней (OpenWeatherMap)</title>
+    <title>Прогноз погоды на 5 дней</title>
     <link href="scripts/leaflet.css" rel="stylesheet" type="text/css" />
 
-    <link rel="stylesheet" type="text/css" href="styles/style.css?p=1111" />
-  </head>
+    <link rel="stylesheet" type="text/css" href="styles/style.css?p=1234" />
+</head>
 
-  <body>
+<body>
     <div class="container">
-      <header class="row">
-        <h5>
-          <i class="fa fa-plane"></i> Контрольные точки
-          <i class="fa fa-plane"></i>
-        </h5>
-      </header>
+        <header class="row">
+            <h5>
+                <i class="fa fa-plane"></i> Контрольные точки
+                <i class="fa fa-plane"></i>
+            </h5>
+        </header>
 
-      <div class="text-title">Прогноз погоды 
-          на 5 дней (OpenWeatherMap) <strong data-bind="text:city" ></strong></div>
+        <div class="text-title">Прогноз погоды на 5 дней<strong data-bind="text:city"></strong></div>
 
-      <div id='loadingProc' class="row text-block" style="display: none">
+        <div id='loadingProc' class="row text-block" style="display: none">
             <i class="fa fa-spinner fa-spin fa-fw"></i>
-      </div>
-
-      <div class="row">
-        <table>
-          <thead>
-            <tr>
-              <th>Дата</th>             
-              <th></th>
-              <th>Облч-ть, %</th>
-               <th>Напр ветр, гр</th>
-              <th>Скор, м/с</th>
-              <th>Темп-ра, &#8451;</th>
-            </tr>
-          </thead>
-
-          <tbody data-bind="foreach: items">
-            <tr>
-              <td><span data-bind="text: dt_txt"></span></td>
-              <td>
-                <img data-bind="attr: { src: iconUrl, title: desc }" />
-              </td>
-              <td><span data-bind="text: clouds"></span></td>
-              <td><span data-bind="text: deg"></span></td>
-              <td><span data-bind="text: speed"></span></td>
-
-              <td><span data-bind="text: temp"></span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="row">
-        <div>
-          <a class="button" href="index.html">Главная</a>
         </div>
-      </div>
 
-      <footer class="row">
-        <span>Контрольные точки</span> <i class="fa fa-plane"></i> 2021
-        <br />
-        <span
-          >Контакт:<i class="fa fa-laptop" aria-hidden="true"></i>
+        <div class="row">
+            <table class='table-condensed'>
+                <thead>
+                    <tr>
+                        <th>Дата</th>
+                        <th></th>
+                        <th>Облч %</th>
+                        <th>Напр ветр, гр</th>
+                        <th>Скор, м/с</th>
+                        <th>Темп, &#8451;</th>
+                    </tr>
+                </thead>
+
+                <tbody data-bind="foreach: items">
+                    <tr>
+                        <td><span data-bind="text: dt_txt"></span></td>
+                        <td>
+                            <img data-bind="attr: { src: iconUrl, title: desc }" />
+                        </td>
+                        <td><span data-bind="text: clouds"></span></td>
+                        <td><span data-bind="text: deg"></span></td>
+                        <td><span data-bind="text: speed"></span></td>
+
+                        <td><span data-bind="text: temp"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row">
+            <div>
+                <a class="button" href="index.html">Главная</a>
+            </div>
+        </div>
+
+        <footer class="row">
+            <span>Контрольные точки</span> <i class="fa fa-plane"></i> 2021
+            <br />
+            <span>Контакт:<i class="fa fa-laptop" aria-hidden="true"></i>
           knstshk@gmail.com</span
         >
         <i class="fa fa-envelope-o" aria-hidden="true"></i>

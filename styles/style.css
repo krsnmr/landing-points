@@ -28,7 +28,7 @@ footer {
     text-align: center;
 }
 
-.text-title{
+.text-title {
     font-size: 1.8rem;
 }
 
@@ -48,4 +48,9 @@ ul.no-bullets {
 
 .slidecontainer.label-body {
     margin-left: auto;
+}
+
+table td,
+table th {
+    padding: 2px;
 }
