@@ -213,7 +213,7 @@
             currentLandingPoint = pntLanding5;
         
 
-        map.setView(currentLandingPoint, 14);
+        map.setView(currentLandingPoint);
 
         calcPointsDests();
     }
