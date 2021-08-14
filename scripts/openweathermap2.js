@@ -8,7 +8,10 @@
     // *****  Minute forecast for 1 hour  *****  Hourly forecast for 48 hours  **** 
     var owmFcst1Url = "https://api.openweathermap.org/data/2.5/onecall?lat=59.835057&lon=31.479017&exclude=current,minutely,daily,alerts&appid=2abe21ecc1e023a3e634fc34f9cc1ff0&lang=ru";
 
-
+    // добавить слой на карту Leaflet
+    var url2222222 = "https://tile.openweathermap.org/map/clouds/10/59.835057/31.479017.png?appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
+    var url1111111 = "https://openweathermap.org/weathermap?basemap=map&cities=false&layer=clouds&lat=30&lon=-20&zoom=3";
+    var mapFcstUrl = "https://maps.openweathermap.org/maps/2.0/weather/1h/PARAIN/10/59.835057/31.479017?date=1527811200&appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
     moment.locale('ru');
 
 
