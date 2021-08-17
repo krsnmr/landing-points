@@ -5,17 +5,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link rel="stylesheet" href="styles/reset.min.css">
     <link rel="stylesheet" href="styles/skeleton/skeleton2.min.css" type="text/css" />
     <link rel="icon" type="image/png" href="img/pin-33.png" />
     <link rel="shortcut icon" type="image/png" href="img/pin-33.png" />
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
-    <title>Погода с OpenWeatherMap</title>
+    <title>Прогноз погоды почасовой на 2 дня</title>
     <link href="scripts/leaflet.css" rel="stylesheet" type="text/css" />
 
-    <link rel="stylesheet" type="text/css" href="styles/style.css?p=111" />
+    <link rel="stylesheet" type="text/css" href="styles/style.css?p=1234" />
 </head>
 
 <body>
@@ -28,47 +27,37 @@
             </h5>
         </header>
 
-        <h5>Погода сейчас</h5>
+        <div class="text-title">Прогноз погоды почасовой на 2 дня:
+            <span data-bind="text:fctDate"></span> </div>
 
-        <div class="row" style="display: none">
-            <div class="five columns">
-                Направление ветра: <span id="demo1"></span>гр.<br /> Скоорость ветра: <span id="demo2"></span>м/с<br /> Порывы: <span id="demo3"></span>м/с<br /> Состояние: <span id="demo4"></span> <br /> Температура: <span id="demo5"></span> <br /> Погода:
-                <img alt="погода" id="wicon" />
-                <hr />
-            </div>
-
-            <div class="three columns"></div>
-
-            <div class="two columns"></div>
-        </div>
-
-        <div class="row text-block">
-            <div>
-                <div id="map2"></div>
-            </div>
+        <div id='loadingProc' class="row text-block" style="display: none">
+            <i class="fa fa-spinner fa-spin fa-fw"></i>
         </div>
 
         <div class="row">
             <table>
                 <thead>
                     <tr>
-                        <th>Название</th>
+                        <th colspan="2"> Дата</th>
                         <th></th>
                         <th>Облч %</th>
-                        <th>Напр гр</th>
-                        <th>Скор м/с</th>
-                        <th>Темп &#8451;</th>
+                        <th>Напр ветр, гр</th>
+                        <th>Скор, м/с</th>
+                        <th>Темп, &#8451;</th>
                     </tr>
                 </thead>
-                <tbody data-bind="foreach: locs">
+
+                <tbody data-bind="foreach: items">
                     <tr>
-                        <td><span data-bind="text: name"></span></td>
+                        <td><span data-bind="text: dt_txt_day"></span></td>
+                        <td><span data-bind="text: dt_txt"></span></td>
                         <td>
                             <img data-bind="attr: { src: iconUrl, title: desc }" />
                         </td>
                         <td><span data-bind="text: clouds"></span></td>
                         <td><span data-bind="text: deg"></span></td>
                         <td><span data-bind="text: speed"></span></td>
+
                         <td><span data-bind="text: temp"></span></td>
                     </tr>
                 </tbody>
@@ -78,7 +67,8 @@
         <div class="row">
             <div>
                 <a class="button" href="index.html">Главная</a>
-                <a class="button" href="weatherForecast.html">Прогноз</a>
+                <a class="button" href="weather.html">Погода</a>
+                <a class="button" href="weatherForecast.html">Прогноз(5)</a>
             </div>
         </div>
 
@@ -91,9 +81,10 @@
         <i class="fa fa-envelope-o" aria-hidden="true"></i>
       </footer>
     </div>
-    <script src="scripts/leaflet-1.js"></script>
+
     <script src="scripts/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"></script>
-    <script src="scripts/openweathermap1.js?p=966"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
+    <script src="scripts/openweathermap3.js?p=111111"></script>
   </body>
 </html>

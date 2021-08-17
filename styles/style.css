@@ -28,7 +28,15 @@ footer {
     text-align: center;
 }
 
-.text-title{
+header a:hover,
+header a:visited,
+header a:link,
+header a:active {
+    text-decoration: none;
+    color: #ddd;
+}
+
+.text-title {
     font-size: 1.8rem;
 }
 
@@ -48,4 +56,14 @@ ul.no-bullets {
 
 .slidecontainer.label-body {
     margin-left: auto;
+}
+
+table td,
+table th {
+    padding: 2px;
+    vertical-align: middle;
+}
+
+div.container {
+    padding: 0 2px;
 }

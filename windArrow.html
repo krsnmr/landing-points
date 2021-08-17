@@ -6,11 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" href="styles/reset.min.css">
+    <link rel="icon" type="image/png" href="img/pin-33.png" />
+    <link rel="shortcut icon" type="image/png" href="img/pin-33.png" />
+
+
     <link rel="stylesheet" type="text/css" href="styles/skeleton/skeleton2.min.css">
 
     <script src="scripts/jquery.min.js"></script>
-    <title>Пример использования OpenWeatherMap</title>
-
+    <title>Пример использования </title>
+    <link href="scripts/leaflet.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="styles/style.css?p=111" />
     <style>
 
     </style>
@@ -18,35 +24,43 @@
 
 <body>
     <div class="container">
-        <h4>Получение данных из сервиса </h4>
-        <div class="row">
-            <div class="five columns">
-                Направление ветра: 
-                <span id="demo1"></span>гр.<br> 
-                Скоорость ветра: <span id="demo2"></span>м/с<br> 
-                Порывы: <span id="demo3"></span>м/с<br> 
-                Состояние: <span id="demo4"></span> <br> 
-                Температура: <span id="demo5"></span> <br>
-                <hr>
+        <header class="row">
+            <h5>
+                <a href="index.html">
+                    <i class="fa fa-plane"></i> Контрольные точки
+                    <i class="fa fa-plane"></i></a>
+            </h5>
+        </header>
+
+        <h5>Стрелка на карте при изменении масштаба </h5>
+
+
+            <div class="row">                
+                <div class="two columns">
+                    <button type="button" id="b1">Задать</button>
+                </div>
             </div>
 
-            <div class="three columns">
-                <img alt="погода" id='wicon'>
+
+            <div class="row text-block">
+                <div>
+                    <div id="map"></div>
+                </div>
             </div>
 
-            <div class="two columns">
-                <button type="button" id="b1">Задать</button>
+            <div class="row">
+                <div>
+                    <a  class="button"  href="index.html">Главная</a>
+                </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div>
-                <a class="navbar-link" href="index.html">Главная</a>
-            </div>
-        </div>
 
 
     </div>
-    <script src="scripts/openweathermap1.js?p=999"></script>
+
+    <script src="scripts/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"></script>
+
+    <script src="scripts/leaflet-1.js"></script>
+    <script src="scripts/mapTest1.js"></script>
 </body>
 </html>

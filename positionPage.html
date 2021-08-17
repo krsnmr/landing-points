@@ -5,12 +5,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/reset.min.css">
+    <link rel="stylesheet" href="styles/skeleton/skeleton2.min.css" type="text/css" />
 
-    <link href="styles/skeleton/base.css" rel="stylesheet" type="text/css" />
-    <link href="styles/skeleton/skeleton.css" rel="stylesheet" type="text/css" />
-    <link href="styles/skeleton/layout.css" rel="stylesheet" type="text/css" />
+
     <link href="styles/check-btn.css" rel="stylesheet" type="text/css" />
     <link href="scripts/leaflet.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="styles/style.css?p=111" />
 
     <title>Текущее положение</title>
     <style>
@@ -23,13 +24,15 @@
 
 <body>
     <div class="container">
-        <h4>Текущее положение на местности</h4>
-        <ul class="navbar-list">
-            <li class="navbar-item">
-                <a class="navbar-link" href="index.html">Главная</a>
+        <header class="row">
+            <h5>
+                <a href="index.html">
+                    <i class="fa fa-plane"></i> Контрольные точки
+                    <i class="fa fa-plane"></i></a>
+            </h5>
+        </header>
+        <h5>Текущее положение на местности</h5>
 
-            </li>
-        </ul>
         <div class="row">
             <div>
                 <!-- Rounded switch -->
@@ -42,7 +45,7 @@
         </div>
 
 
-        <div class="row">
+        <div class="row text-block">
             <div>
                 <div id="map"></div>
             </div>
@@ -53,7 +56,17 @@
                 <span id="s1" style="color: white">Новые данные...</span>
                 <span id="s2"></span >
         </div>
+
+        <div class="row">
+            <div>
+                <a class="button" href="index.html">Главная</a>
+                <a class="button" href="weatherForecast.html">Прогноз</a>
+            </div>
+        </div>
+
       </div>
+
+      
     </div>
 
     <script src="scripts/leaflet-1.js"></script>
