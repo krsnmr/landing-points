@@ -11,18 +11,19 @@ var owm1 = (function($, ko, L) {
     var href2 =
         "https://api.openweathermap.org/data/2.5/find?lat=59.835057&lon=31.479017&cnt=8&lang=ru&units=metric&APPID=2abe21ecc1e023a3e634fc34f9cc1ff0";
 
-    var href3 =
-        "https://api.openweathermap.org/data/2.5/forecast?id=866055&lang=ru&units=metric&appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
-
+    var href3test =
+      "https://api.openweathermap.org/data/2.5/find?lat=58.5&lon=36.3&cnt=8&lang=ru&units=metric&APPID=2abe21ecc1e023a3e634fc34f9cc1ff0";
+   
     var pntCone = [59.835057, 31.479017];
 
-    function LocationViewModel(name, lat, lon, temp, speed, deg, desc, icon, clouds) {
+    function LocationViewModel(name, lat, lon, temp, speed,  deg, desc, icon, clouds, rainData) {
         var self = this;
         self.name = name;
         self.lat = lat;
         self.lon = lon;
         self.temp = Math.round(temp);
-        self.speed = speed;
+        self.speed = Math.round(speed);
+        //self.gust = Math.round(gust);
         self.deg = deg;
 
         self.desc = desc;
@@ -30,8 +31,8 @@ var owm1 = (function($, ko, L) {
         self.clouds = clouds;
         self.iconUrl =
             "https://openweathermap.org/img/w/" + icon + ".png";
-
-
+           
+        self.rain = rainData ? JSON.parse(rainData['1h']) : "-";
     }
 
     function CitiesViewModel() {
@@ -81,7 +82,8 @@ var owm1 = (function($, ko, L) {
                     el.wind.deg,
                     el.weather[0].description,
                     el.weather[0].icon,
-                    el.clouds.all
+                    el.clouds.all,
+                    el.rain
                 );
                 vm.addLoc(loc);
 
