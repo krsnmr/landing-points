@@ -68,7 +68,7 @@ var owm1 = (function($, ko, L) {
         var vm = new CitiesViewModel();
         initMap();
 
-        $.get(href3test, function(data) {
+        $.get(href2, function(data) {
             //console.log(data);
 
             for (let i = 0; i < data.list.length; i++) {
