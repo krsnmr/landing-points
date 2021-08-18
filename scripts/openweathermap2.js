@@ -3,6 +3,7 @@
     // получить прогноз погоды для города
     var owmUrl = "https://api.openweathermap.org/data/2.5/weather?id=866055&lang=ru&units=metric&appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
     var owmFcst1Url = "https://api.openweathermap.org/data/2.5/forecast/hourly?id=866055&lang=ru&units=metric&appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
+    //Прогноз погоды на 5 дней
     var owmFcst0Url = "https://api.openweathermap.org/data/2.5/forecast?id=866055&lang=ru&units=metric&appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
 
     // *****  Minute forecast for 1 hour  *****  Hourly forecast for 48 hours  **** 
@@ -22,9 +23,9 @@
         self.dt = dt;
 
         self.temp = Math.round(temp);
-        self.speed = speed;
+        self.speed = Math.round(speed);
         self.deg = deg;
-        self.gust = gust;
+        self.gust = Math.round(gust);
         self.desc = desc;
         self.icon = icon;
         self.clouds = clouds;
@@ -32,7 +33,7 @@
         self.iconUrl =
             "https://openweathermap.org/img/w/" + icon + ".png";
 
-          self.diffDays = moment.duration(today.diff(dt)).asDays();
+          //self.diffDays = moment.duration(today.diff(dt)).asDays();
     }
 
     function ForecastViewModel() {

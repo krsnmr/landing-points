@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles/skeleton/skeleton2.min.css" type="text/css" />
     <link rel="icon" type="image/png" href="img/pin-33.png" />
     <link rel="shortcut icon" type="image/png" href="img/pin-33.png" />
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="styles/font-awesome.min.css" rel="stylesheet" />
 
     <title>Прогноз погоды почасовой на 2 дня</title>
     <link href="scripts/leaflet.css" rel="stylesheet" type="text/css" />
@@ -27,7 +27,7 @@
             </h5>
         </header>
 
-        <div class="text-title">Прогноз погоды почасовой на 2 дня:
+        <div class="text-title">Прогноз погоды на 2 дня (Путилово):
             <span data-bind="text:fctDate"></span> </div>
 
         <div id='loadingProc' class="row text-block" style="display: none">
@@ -41,8 +41,9 @@
                         <th colspan="2"> Дата</th>
                         <th></th>
                         <th>Облч %</th>
-                        <th>Напр ветр, гр</th>
+                       
                         <th>Скор, м/с</th>
+                        <th>Порывы</th>
                         <th>Темп, &#8451;</th>
                     </tr>
                 </thead>
@@ -55,9 +56,9 @@
                             <img data-bind="attr: { src: iconUrl, title: desc }" />
                         </td>
                         <td><span data-bind="text: clouds"></span></td>
-                        <td><span data-bind="text: deg"></span></td>
+                      
                         <td><span data-bind="text: speed"></span></td>
-
+                        <td><span data-bind="text: gust"></span></td>
                         <td><span data-bind="text: temp"></span></td>
                     </tr>
                 </tbody>
@@ -68,7 +69,10 @@
             <div>
                 <a class="button" href="index.html">Главная</a>
                 <a class="button" href="weather.html">Погода</a>
-                <a class="button" href="weatherForecast.html">Прогноз(5)</a>
+                <a class="button" href="weatherForecast.html">
+                    <i class="fa fa-cloud" aria-hidden="true"></i>
+                    5 дней
+                </a>
             </div>
         </div>
 
