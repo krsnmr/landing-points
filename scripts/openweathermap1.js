@@ -20,7 +20,7 @@ var owm1 = (function($, ko, L) {
     var urlOwmCloudsLayer =
       "https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
     var attr1 =
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> 111contributors';
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
         
     moment.locale("ru");
     function LocationViewModel(name, lat, lon, temp, speed,  deg, desc, icon, clouds, rainData) {
@@ -66,9 +66,9 @@ var owm1 = (function($, ko, L) {
 
         map = L.map("map2");
         L.tileLayer(OSM_URL, {
-            maxZoom: 18,
-            attribution: "Погода поблизости",
-            id: "map2",
+          maxZoom: 18,
+          attribution: "Погода в Путилово",
+          id: "map2",
         }).addTo(map);
 
          L.tileLayer(urlOwmCloudsLayer, { foo: "bar", attribution: attr1 }).addTo(map);
