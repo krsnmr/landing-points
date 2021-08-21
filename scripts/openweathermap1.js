@@ -15,7 +15,14 @@ var owm1 = (function($, ko, L) {
       "https://api.openweathermap.org/data/2.5/find?lat=58.5&lon=36.3&cnt=8&lang=ru&units=metric&APPID=2abe21ecc1e023a3e634fc34f9cc1ff0";
    
     var pntCone = [59.835057, 31.479017];
-
+    
+    // для слоя облачности
+    var urlOwmCloudsLayer =
+      "https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
+    var attr1 =
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> 111contributors';
+        
+    moment.locale("ru");
     function LocationViewModel(name, lat, lon, temp, speed,  deg, desc, icon, clouds, rainData) {
         var self = this;
         self.name = name;
@@ -39,6 +46,7 @@ var owm1 = (function($, ko, L) {
         var self = this;
 
         self.locs = ko.observableArray();
+        self.fctDate = moment().format("ddd DD MMM HH:mm").toString();
 
         self.addLoc = function(loc) {
             self.locs.push(loc);
@@ -62,11 +70,14 @@ var owm1 = (function($, ko, L) {
             attribution: "Погода поблизости",
             id: "map2",
         }).addTo(map);
+
+         L.tileLayer(urlOwmCloudsLayer, { foo: "bar", attribution: attr1 }).addTo(map);
     };
 
     $(function() {
         var vm = new CitiesViewModel();
         initMap();
+        
 
         $.get(href2, function(data) {
             //console.log(data);
@@ -99,7 +110,7 @@ var owm1 = (function($, ko, L) {
                 bounds = L.latLngBounds(corner1, corner2);
 
             map.fitBounds(bounds);
-        });
+        });        
 
         ko.applyBindings(vm);
     });

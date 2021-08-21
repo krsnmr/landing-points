@@ -18,7 +18,7 @@
       rel="stylesheet"
     />
 
-    <title>Погода с OpenWeatherMap</title>
+    <title>Погода в Путилово и в окрестностях на данный момент</title>
     <link href="scripts/leaflet.css" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" type="text/css" href="styles/style.css?p=111" />
@@ -35,7 +35,7 @@
         </h5>
       </header>
 
-      <h5>Погода сейчас</h5>
+      <h5>Погода на (<span data-bind="text:fctDate"></span>)</h5>
 
       <div class="row" style="display: none">
         <div class="five columns">
@@ -117,6 +117,7 @@
     </div>
     <script src="scripts/leaflet-1.js"></script>
     <script src="scripts/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"></script>
     <script src="scripts/openweathermap1.js?p=967"></script>
   </body>
