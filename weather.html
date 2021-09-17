@@ -1,91 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="styles/reset.min.css">
-    <link rel="stylesheet" href="styles/skeleton/skeleton2.min.css" type="text/css" />
+    <link rel="stylesheet" href="styles/reset.min.css" />
+    <link
+      rel="stylesheet"
+      href="styles/skeleton/skeleton2.min.css"
+      type="text/css"
+    />
     <link rel="icon" type="image/png" href="img/pin-33.png" />
     <link rel="shortcut icon" type="image/png" href="img/pin-33.png" />
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link
+      href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
 
-    <title>Погода с OpenWeatherMap</title>
+    <title>Погода в Путилово и в окрестностях на данный момент</title>
     <link href="scripts/leaflet.css" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" type="text/css" href="styles/style.css?p=111" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <header class="row">
-            <h5>
-                <a href="index.html">
-                    <i class="fa fa-plane"></i> Контрольные точки
-                    <i class="fa fa-plane"></i></a>
-            </h5>
-        </header>
+      <header class="row">
+        <h5>
+          <a href="index.html">
+            <i class="fa fa-plane"></i> Контрольные точки
+            <i class="fa fa-plane"></i
+          ></a>
+        </h5>
+      </header>
 
-        <h5>Погода</h5>
+      <h5>Погода на (<span data-bind="text:fctDate"></span>)</h5>
 
-        <div class="row" style="display: none">
-            <div class="five columns">
-                Направление ветра: <span id="demo1"></span>гр.<br /> Скоорость ветра: <span id="demo2"></span>м/с<br /> Порывы: <span id="demo3"></span>м/с<br /> Состояние: <span id="demo4"></span> <br /> Температура: <span id="demo5"></span> <br /> Погода:
-                <img alt="погода" id="wicon" />
-                <hr />
-            </div>
-
-            <div class="three columns"></div>
-
-            <div class="two columns"></div>
+      <div class="row" style="display: none">
+        <div class="five columns">
+          Направление ветра: <span id="demo1"></span>гр.<br />
+          Скоорость ветра: <span id="demo2"></span>м/с<br />
+          Порывы: <span id="demo3"></span>м/с<br />
+          Состояние: <span id="demo4"></span> <br />
+          Температура: <span id="demo5"></span> <br />
+          Погода:
+          <img alt="погода" id="wicon" />
+          <hr />
         </div>
 
-        <div class="row text-block">
-            <div>
-                <div id="map2"></div>
-            </div>
-        </div>
+        <div class="three columns"></div>
 
-        <div class="row">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Название</th>
-                        <th></th>
-                        <th>Облч %</th>
-                        <th>Напр гр</th>
-                        <th>Скор м/с</th>
-                        <th>Темп &#8451;</th>
-                    </tr>
-                </thead>
-                <tbody data-bind="foreach: locs">
-                    <tr>
-                        <td><span data-bind="text: name"></span></td>
-                        <td>
-                            <img data-bind="attr: { src: iconUrl, title: desc }" />
-                        </td>
-                        <td><span data-bind="text: clouds"></span></td>
-                        <td><span data-bind="text: deg"></span></td>
-                        <td><span data-bind="text: speed"></span></td>
-                        <td><span data-bind="text: temp"></span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <div class="two columns"></div>
+      </div>
 
-        <div class="row">
-            <div>
-                <a class="button" href="index.html">Главная</a>
-                <a class="button" href="weatherForecast.html">Прогноз</a>
-            </div>
+      <div class="row text-block">
+        <div>
+          <div id="map2"></div>
         </div>
+      </div>
 
-        <footer class="row">
-            <span>Контрольные точки</span> <i class="fa fa-plane"></i> 2021
-            <br />
-            <span>Контакт:<i class="fa fa-laptop" aria-hidden="true"></i>
+      <div class="row">
+        <table>
+          <thead>
+            <tr>
+              <th>Пункт</th>
+              <th></th>
+              <th>Облч %</th>
+
+              <th>Ветер м/с</th>
+             
+              <th>Темп &#8451;</th>
+              <th>Дождь мм</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody data-bind="foreach: locs">
+            <tr>
+              <td><span data-bind="text: name"></span></td>
+              <td>
+                <img data-bind="attr: { src: iconUrl, title: desc }" />
+              </td>
+              <td><span data-bind="text: clouds"></span></td>
+             <td><span data-bind="text: speed"></span></td>
+              
+              <td><span data-bind="text: temp"></span></td>
+               <td><span data-bind="text: rain"></span></td>
+              <td><span data-bind="text:desc"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row">
+        <div>
+          <a class="button" href="index.html">Главная</a>
+          <a class="button" href="weatherForecast.html">
+            <i class="fa fa-cloud" aria-hidden="true"></i> 5 дней</a
+          >
+          <a class="button" href="weatherForecastHourly.html">
+            <i class="fa fa-cloud" aria-hidden="true"></i>
+            2 дня
+          </a>
+        </div>
+      </div>
+
+      <footer class="row">
+        <span>Контрольные точки</span> <i class="fa fa-plane"></i> 2021
+        <br />
+        <span
+          >Контакт:<i class="fa fa-laptop" aria-hidden="true"></i>
           knstshk@gmail.com</span
         >
         <i class="fa fa-envelope-o" aria-hidden="true"></i>
@@ -93,7 +117,8 @@
     </div>
     <script src="scripts/leaflet-1.js"></script>
     <script src="scripts/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"></script>
-    <script src="scripts/openweathermap1.js?p=966"></script>
+    <script src="scripts/openweathermap1.js?p=967"></script>
   </body>
 </html>

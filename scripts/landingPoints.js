@@ -3,6 +3,12 @@
     var pntLanding = [59.832743, 31.479341];
     var pntArrow = [59.834362, 31.479521];
     var pntCone = [59.835057, 31.479017];
+    var pntLanding2 = [59.837940, 31.483487];
+    var pntLanding3 = [59.835052, 31.478415];
+    var pntLanding4 = [59.838154, 31.476199];
+    var pntLanding5 = [59.831464, 31.474351];
+
+    var currentLandingPoint = null;
 
     var angleInWind = 180; // южный
 
@@ -92,7 +98,7 @@
         // конус
         var windConeMarker = L.marker(pntCone, { iconAngle: angleInDegrees1, icon: iconWindCone, });
 
-        var markerA = L.marker(pntLanding);
+        var markerA = L.marker(currentLandingPoint);
 
         var ll1 = markerA.getLatLng();
         // точка 1 (100)
@@ -174,14 +180,16 @@
 
         addBuildings();
 
-        //var btn1 = window.document.getElementById("b1");
-        //btn1.onclick = function() { calcPointsDests(); };
-
-        var ddl = window.document.getElementById("ddlWindSpeed");
-        ddl.onchange = function() { calcPointsDests() }
+        $('#ddlWindSpeed').on('change', function() { calcPointsDests(); });
+        $('#ddlLandingPoints').on('change', function() {
+            var pointIdx = $(this).val();
+            setLandingPoint(pointIdx);
+        });
 
         // добавить слой в котором отображать точки
         layerGroup1 = L.layerGroup().addTo(map);
+
+        currentLandingPoint = pntLanding;
 
         calcPointsDests();
 
@@ -189,6 +197,26 @@
 
         initLocate(false);
     };
+
+
+    var setLandingPoint = function(idx) {
+        console.log('setLandingPoint - ' + idx);
+        if (idx == 1)
+            currentLandingPoint = pntLanding;
+        else if (idx == 2)
+            currentLandingPoint = pntLanding2;
+        else if (idx == 3)
+            currentLandingPoint = pntLanding3;
+        else if (idx == 4)
+            currentLandingPoint = pntLanding4;
+        else if (idx == 5)
+            currentLandingPoint = pntLanding5;
+
+
+        map.setView(currentLandingPoint);
+
+        calcPointsDests();
+    }
 
     var current_position; // маркер с определенной координатой
     var current_accuracy; // область с точностью с которой определена координата
@@ -229,20 +257,23 @@
     var owmUrl = "https://api.openweathermap.org/data/2.5/weather?id=866055&lang=ru&units=metric&appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
     // получить текущую погоду из сервиса
     var setOpenWeatherData = function() {
+        $('#loadingProc').show();
         $.get(owmUrl, function(data) {
-
-            var windDeg = data.wind.deg;
-            var speedDeg = data.wind.speed;
-            //console.log('напр ветра - ', windDeg);
-
-            $('#teAngleValue').val(windDeg);
-            calcPointsDests();
-
-            $('#demo').html(setWindTxt(windDeg));
-
-            $("#spWindSpeed").html(speedDeg + 'м/с');
-        });
+                var windDeg = data.wind.deg;
+                var speedDeg = data.wind.speed;
+                $('#teAngleValue').val(windDeg);
+                calcPointsDests();
+                $('#demo').html(setWindTxt(windDeg));
+                $("#spWindSpeed").html(speedDeg + 'м/с');
+            }).fail(function() {
+                alert("error");
+            })
+            .always(function() {
+                $('#loadingProc').hide();
+            });;
     }
+
+
 
 
     // отобразить текстовое описание ветра

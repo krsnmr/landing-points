@@ -90,24 +90,30 @@ jasmineRequire.HtmlReporter = function(j$) {
     this.initialize = function() {
       clearPrior();
       htmlReporterMain = createDom(
-        'div',
-        { className: 'jasmine_html-reporter' },
+        "div",
+        { className: "jasmine_html-reporter" },
         createDom(
-          'div',
-          { className: 'jasmine-banner' },
-          createDom('a', {
-            className: 'jasmine-title',
-            href: 'http://jasmine.github.io/',
-            target: '_blank'
+          "div",
+          { className: "jasmine-banner" },
+          createDom("a", {
+            className: "jasmine-title",
+            href: "http://jasmine.github.io/",
+            target: "_blank",
           }),
-          createDom('span', { className: 'jasmine-version' }, j$.version)
+          createDom("span", { className: "jasmine-version" }, j$.version),
+          //createDom("strong", { className: "jasmine-version" }, "КОНТРОЛЬНЫЕ ТОЧКИ")
+          createDom("a", {
+            className: "jasmine-version",
+            href: "../"
+            
+          }, createDom("strong", { className: "jasmine-111" }, "КОНТРОЛЬНЫЕ ТОЧКИ"))
         ),
-        createDom('ul', { className: 'jasmine-symbol-summary' }),
-        createDom('div', { className: 'jasmine-alert' }),
+        createDom("ul", { className: "jasmine-symbol-summary" }),
+        createDom("div", { className: "jasmine-alert" }),
         createDom(
-          'div',
-          { className: 'jasmine-results' },
-          createDom('div', { className: 'jasmine-failures' })
+          "div",
+          { className: "jasmine-results" },
+          createDom("div", { className: "jasmine-failures" })
         )
       );
       getContainer().appendChild(htmlReporterMain);

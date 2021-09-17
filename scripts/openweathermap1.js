@@ -11,18 +11,26 @@ var owm1 = (function($, ko, L) {
     var href2 =
         "https://api.openweathermap.org/data/2.5/find?lat=59.835057&lon=31.479017&cnt=8&lang=ru&units=metric&APPID=2abe21ecc1e023a3e634fc34f9cc1ff0";
 
-    var href3 =
-        "https://api.openweathermap.org/data/2.5/forecast?id=866055&lang=ru&units=metric&appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
-
+    var href3test =
+      "https://api.openweathermap.org/data/2.5/find?lat=58.5&lon=36.3&cnt=8&lang=ru&units=metric&APPID=2abe21ecc1e023a3e634fc34f9cc1ff0";
+   
     var pntCone = [59.835057, 31.479017];
-
-    function LocationViewModel(name, lat, lon, temp, speed, deg, desc, icon, clouds) {
+    
+    // для слоя облачности
+    var urlOwmCloudsLayer =
+      "https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=2abe21ecc1e023a3e634fc34f9cc1ff0";
+    var attr1 =
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+        
+    moment.locale("ru");
+    function LocationViewModel(name, lat, lon, temp, speed,  deg, desc, icon, clouds, rainData) {
         var self = this;
         self.name = name;
         self.lat = lat;
         self.lon = lon;
         self.temp = Math.round(temp);
-        self.speed = speed;
+        self.speed = Math.round(speed);
+        //self.gust = Math.round(gust);
         self.deg = deg;
 
         self.desc = desc;
@@ -30,14 +38,15 @@ var owm1 = (function($, ko, L) {
         self.clouds = clouds;
         self.iconUrl =
             "https://openweathermap.org/img/w/" + icon + ".png";
-
-
+           
+        self.rain = rainData ? JSON.parse(rainData['1h']) : "-";
     }
 
     function CitiesViewModel() {
         var self = this;
 
         self.locs = ko.observableArray();
+        self.fctDate = moment().format("ddd DD MMM HH:mm").toString();
 
         self.addLoc = function(loc) {
             self.locs.push(loc);
@@ -57,15 +66,18 @@ var owm1 = (function($, ko, L) {
 
         map = L.map("map2");
         L.tileLayer(OSM_URL, {
-            maxZoom: 18,
-            attribution: "Погода поблизости",
-            id: "map2",
+          maxZoom: 18,
+          attribution: "Погода в Путилово",
+          id: "map2",
         }).addTo(map);
+
+         L.tileLayer(urlOwmCloudsLayer, { foo: "bar", attribution: attr1 }).addTo(map);
     };
 
     $(function() {
         var vm = new CitiesViewModel();
         initMap();
+        
 
         $.get(href2, function(data) {
             //console.log(data);
@@ -81,7 +93,8 @@ var owm1 = (function($, ko, L) {
                     el.wind.deg,
                     el.weather[0].description,
                     el.weather[0].icon,
-                    el.clouds.all
+                    el.clouds.all,
+                    el.rain
                 );
                 vm.addLoc(loc);
 
@@ -97,7 +110,7 @@ var owm1 = (function($, ko, L) {
                 bounds = L.latLngBounds(corner1, corner2);
 
             map.fitBounds(bounds);
-        });
+        });        
 
         ko.applyBindings(vm);
     });
