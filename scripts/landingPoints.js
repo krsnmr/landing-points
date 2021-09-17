@@ -101,7 +101,7 @@
 
         // точка 2 слева от цели (200)
         var markerC_1 = L.GeometryUtil.destination(ll1, angleInDegrees2_1, radiusInMeter2);
-         var markerC_1_2 = L.GeometryUtil.destination(ll1, angleInDegrees2_1, 100);
+        var markerC_1_2 = L.GeometryUtil.destination(ll1, angleInDegrees2_1, 100);
 
 
         // точка 2 слева от цели (200)
@@ -115,9 +115,9 @@
 
         var markerE_1 = L.GeometryUtil.destination(ll1, angleInDegrees3, 400);
         var markerE_2 = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_1);
-         var markerF_0 = L.GeometryUtil.destination(ll1, angleInDegrees3, 600);
+        var markerF_0 = L.GeometryUtil.destination(ll1, angleInDegrees3, 600);
         var markerF_1 = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_2);
-         var markerG_0 = L.GeometryUtil.destination(ll1, angleInDegrees3, 800);
+        var markerG_0 = L.GeometryUtil.destination(ll1, angleInDegrees3, 800);
         var markerG_1 = L.GeometryUtil.destination(ll1, angleInDegrees3, radiusInMeter4_3);
         var markerG_2 = L.GeometryUtil.destination(ll1, angleInDegrees3, 1000);
 
@@ -140,9 +140,9 @@
 
         L.circle(markerE_1, { color: "#ссс" }).addTo(layerGroup1);
         L.circle(markerE_2, { color: "#f0f" }).addTo(layerGroup1);
-         L.circle(markerF_0, { color: "#ссс" }).addTo(layerGroup1);
+        L.circle(markerF_0, { color: "#ссс" }).addTo(layerGroup1);
         L.circle(markerF_1, { color: "#f0f" }).addTo(layerGroup1);
-         L.circle(markerG_0, { color: "#ссс" }).addTo(layerGroup1);
+        L.circle(markerG_0, { color: "#ссс" }).addTo(layerGroup1);
         L.circle(markerG_1, { color: "#f0f" }).addTo(layerGroup1);
         L.circle(markerG_2, { color: "#ссс" }).addTo(layerGroup1);
 
@@ -204,7 +204,7 @@
     }
 
     function onLocationError(e) {
-        alert(e.message);
+        console.log(e.message);
     }
 
     // 
@@ -232,7 +232,7 @@
         $.get(owmUrl, function(data) {
 
             var windDeg = data.wind.deg;
-             var speedDeg = data.wind.speed;
+            var speedDeg = data.wind.speed;
             //console.log('напр ветра - ', windDeg);
 
             $('#teAngleValue').val(windDeg);
